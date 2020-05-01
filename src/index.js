@@ -22,6 +22,9 @@ import './assets/css/index.css'
 import "lib-flexible"
 
 
+
+
+
 // 拦截
 axios.interceptors.request.use(config=>{
   config.url = '/api' + config.url
