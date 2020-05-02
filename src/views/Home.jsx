@@ -1,6 +1,13 @@
 import React, { Component } from 'react'
+import Swiper from 'swiper/js/swiper.js'
 
-export default class Home extends Component {
+import 'swiper/css/swiper.min.css'
+import style from './zjcss/home/home.module.css'
+
+import { connect } from 'react-redux'
+
+import homeActionCreator from './../store/actionCreator/home'
+ class Home extends Component {
     render() {
         return (
             <div>
