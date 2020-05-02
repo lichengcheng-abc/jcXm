@@ -1,12 +1,7 @@
 import {
     combineReducers
 } from 'redux'
-import {slide_listReducer,classify_listReducer} from './home/index'
-// const rootReducer = combineReducers({
-//     goods:[]
-// })
-const rootReducer = combineReducers({
-    slide:slide_listReducer,
-    classify:classify_listReducer
+import theatreList from './theatreList'
+export default combineReducers({
+    theatreList
 })
-export default rootReducer
