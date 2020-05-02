@@ -33,10 +33,10 @@ class TheatreList extends Component {
                                     <div className={style.show}>             
                                     
                             {                            
-                                    v.showList.map((k,index)=>(                               
+                                    v.showList.slice(0,3).map((k,index)=>(                               
                                         <div  key={k.id} className={style.showAction}>
                                             <div className={style.show_date}>
-                                            05月29日
+                                            {k.show_time}
                                                 <span className={style.show_dot}></span>
                                             </div>
                                                 <img className={style.action_pic} src={k.pic} />
