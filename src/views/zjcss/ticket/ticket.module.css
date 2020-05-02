@@ -1,0 +1,139 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#detail{
+    width: 750px;
+    height: 434px;
+    background-color: #000;
+    opacity:0.8;
+}
+.header{
+    width: 100%;
+    height: 88px;
+    text-align: center;
+    line-height: 88px;
+    font-size: 36px;
+    color: #fefefe;
+}
+.pro{
+    width: 690px;
+    height: 316px;
+    padding: 0 30px;
+    font-size: 32px;
+    color: #fefefe;
+    display: flex;
+    justify-content: space-between;
+}
+.pro img{
+    width: 220px;
+    height: 300px;
+    border: 1px solid red;
+    margin-top: 20px;
+}
+.pro div{
+    width: 450px;
+    height: 270px;
+    border: 1px solid red;
+    margin: 44px 0 0 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+#server{
+    padding: 0 30px;
+}
+#server .choose{
+    height: 82px;
+    border: 1px solid pink;
+    display: flex;
+    align-items:center;
+    color: #666;
+    font-size: 26px;
+}
+.choose span{
+    margin-right: 15px;
+}
+#server .info{
+    width: 606px;
+    height: 180px;
+    background: red;
+}
+.info p{
+    font-size: 36px;
+    color: #232323;
+    margin-top: 30px;
+}
+.info span{
+    color: #666;
+    font-size: 24px;
+}
+#server .vip p{
+    height: 94px;
+    padding: 22px 30px;
+    margin-top: 20px;
+}
+#server .show .yan{
+    height: 48px;
+    color: #232323;
+    margin-top:32px;
+    font-size: 36px;
+}
+.show .comment{
+    height: 772px;
+    border: 1px solid skyblue;
+}
+.show span{
+    height: 48px;
+}
+.show .content p{
+    height: 296px;
+    font-size: 26px;
+    color: #232323;
+    margin-top: 48px;
+    margin-bottom: 48px;
+    border: 1px solid yellow;
+}
+.show .content div{
+    height: 516px;
+    margin-bottom: 48px;
+    border: 1px solid red;
+}
+#recomm{
+    padding: 0 30px;
+}
+#recomm .conn{
+    height: 48px;
+    color: #232323;
+    margin-top:32px;
+    font-size: 36px;
+}
+.big{
+    height: 288px;
+    display: flex;
+    justify-content: space-between;
+}
+#recomm img{
+    width: 210px;
+    height: 288px;
+    border: 1px solid pink;
+}
+#recomm section{
+    width: 450px;
+    height: 288px;
+    background: salmon;
+}
+.big p:nth-child(2){
+    color: #232323;
+    font-size: 32px;
+}
+.big p{
+    margin-bottom: 20px;
+}
+.big span{
+    color: red;
+}
+
