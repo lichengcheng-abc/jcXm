@@ -5,22 +5,19 @@ import {
   } from 'react-router-dom'
   import style from './zjcss/theatreList/theatreList.module.css'
 import MyRouter from '../components/common/MyRouter'
-<<<<<<< HEAD
-const style ={
-    foot:{
+// const style ={
+//     foot:{
 
-       position:'fixed',
-       bottom:0,
-    //    这里的布局未生效
-       display:'flex',
+//        position:'fixed',
+//        bottom:0,
+//     //    这里的布局未生效
+//        display:'flex',
        
-       justifyContent:'space-around',
+//        justifyContent:'space-around',
 
 
-    }
-}
-=======
->>>>>>> dd8c2be54ddabd9e591612df0fbe64a4cf3f615a
+//     }
+// }
 
 export default class Index extends Component {
     render() {

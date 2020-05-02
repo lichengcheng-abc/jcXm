@@ -8,6 +8,8 @@ from './home/index'
 //     goods:[]
 // })
 
+import theatreList from './theatreList'
+
 const rootReducer = combineReducers({
     slide:slide_listReducer,
     classify:classify_listReducer,
@@ -18,7 +20,9 @@ const rootReducer = combineReducers({
 })
 
 
-import theatreList from './theatreList'
+// import theatreList from './theatreList'
 // export default combineReducers({
 //     theatreList
 // })
+
+export default rootReducer
