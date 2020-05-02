@@ -91,7 +91,7 @@ class TicketDetail extends Component {
     //     // })
     // }
     //https://api.juooo.com/Schedule/Schedule/getScheduleInfo?schedular_id=111609
-    componentDidMount(){
+    async componentDidMount(){
         console.log('3',this)
         this.props.upTicket()   
     }
