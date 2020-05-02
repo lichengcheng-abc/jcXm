@@ -8,11 +8,11 @@ import MyRouter from '../components/common/MyRouter'
 const style ={
     foot:{
 
-       position:'absolute',
+       position:'fixed',
        bottom:0,
     //    这里的布局未生效
        display:'flex',
-       flexDirection:'row',
+       
        justifyContent:'space-around',
 
 
