@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
+import 'lib-flexible'
 import {
   BrowserRouter as Router,
 } from 'react-router-dom'
@@ -19,10 +19,6 @@ import axios from 'axios'
 import './assets/css/index.css'
 
 // 移动端适配
-import "lib-flexible"
-
-
-
 
 
 // 拦截

@@ -1,15 +1,6 @@
 import React, { Component } from 'react'
 
-import Swiper from 'swiper/js/swiper.js'
-
-import 'swiper/css/swiper.min.css'
-import style from './zjcss/home/home.module.css'
-
-import { connect } from 'react-redux'
-
-import homeActionCreator from './../store/actionCreator/home'
-
-class Home extends Component {
+export default class Home extends Component {
     render() {
         return (
             <div>
@@ -314,8 +305,8 @@ class Home extends Component {
 
 
 
+                首页
             </div>
-
         )
     }
     componentDidUpdate() {
@@ -375,3 +366,4 @@ function mapDispatchToProps(dispatch) {
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)
+

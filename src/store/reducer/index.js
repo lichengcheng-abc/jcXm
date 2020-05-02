@@ -13,5 +13,12 @@ const rootReducer = combineReducers({
     classify:classify_listReducer,
     vip:vipIndexReducer,
     hots:hotsRecommendListReducer,
+
+    theatreList
 })
-export default rootReducer
+
+
+import theatreList from './theatreList'
+// export default combineReducers({
+//     theatreList
+// })
