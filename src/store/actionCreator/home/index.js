@@ -16,7 +16,21 @@ export function getClassify_list(payload) {
     }
  }
 
+ export function getVipIndex(payload) {
+   
+    return {
+         type:homeActionType.UP_VIPINDEX,
+         payload
+    }
+ }
 
+ export function getHosts(payload) {
+   
+    return {
+         type:homeActionType.UP_HOTS,
+         payload
+    }
+ }
 
 export default {
     upSlide(){
@@ -25,9 +39,38 @@ export default {
             const {data} = await axios.get('/home/index/getClassifyHome?city_id=0&abbreviation=&version=6.1.1&referer=2')
             // console.log( data.slide_list )
             // console.log(data.classify_list)
+            // 我的轮播图和分类是一个接口的
             dispatch(getSlide_list(data.slide_list))
             dispatch(getClassify_list(data.classify_list))
             
+
+
+        }
+     
+    },
+
+    upVipIndex(){
+      
+        return async function (dispatch) {
+            const {data} = await axios.get('/vip/index/getVipHomeSchedular?city_id=0&version=6.1.1&referer=2')
+            // console.log( data.allList )
+            
+            dispatch(getVipIndex(data.allList))
+         
+
+
+        }
+     
+    },
+
+    upHosts(){
+      
+        return async function (dispatch) {
+            const {data} = await axios.get('/home/index/getHotsRecommendList?city_id=0&version=6.1.1&referer=2')
+           
+            // console.log(data.hots_show_list)
+            dispatch(getHosts(data.hots_show_list))
+         
 
 
         }
