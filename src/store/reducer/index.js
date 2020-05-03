@@ -12,6 +12,7 @@ from './home/index'
 // })
 
 import theatreList from './theatreList'
+import theaterDetail from './theaterDetail'
 
 const rootReducer = combineReducers({
     slide:slide_listReducer,
@@ -20,10 +21,9 @@ const rootReducer = combineReducers({
     tourShow,
     vip:vipIndexReducer,
     hots:hotsRecommendListReducer,
-
-    theatreList
+    theatreList,
+    theaterDetail
 })
-
 
 // import theatreList from './theatreList'
 // export default combineReducers({
