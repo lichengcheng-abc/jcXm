@@ -18,6 +18,8 @@ import TouringList from '../views/noNav/tour/TouringList'
 import TourShowinfo from '../views/noNav/tour/TourShowInfo'
 import VipIndex from '../views/noNav/cards/VipIndex'
 
+
+import Error from '../views/Error'
 export default [
     {
         path: '/activity/group',
@@ -71,6 +73,7 @@ export default [
         path: '/vip/index',
         component: VipIndex,
     },
+   
     {
         path: '/',
         component: Index,
@@ -94,6 +97,10 @@ export default [
             },
         ]
     },
+   
+    
+
+
 
 
 

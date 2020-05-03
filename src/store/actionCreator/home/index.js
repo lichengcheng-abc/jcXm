@@ -32,6 +32,15 @@ export function getClassify_list(payload) {
     }
  }
 
+ export function upWtlist(payload) {
+   
+    return {
+         type:homeActionType.UP_WTLIST,
+         payload
+    }
+ }
+
+
 export default {
     upSlide(){
       
@@ -70,6 +79,25 @@ export default {
            
             // console.log(data.hots_show_list)
             dispatch(getHosts(data.hots_show_list))
+         
+
+
+        }
+     
+    },
+
+    upWtlist(){
+    //   console.log( this )
+        return async (dispatch)=> {
+
+            const {data} = await axios.get('/home/index/getFloorShow?city_id=0&version=6.1.1&referer=2')
+           
+            // console.log(data[2].list)
+            if(data[2].list.length>0){
+               this.state.isLoading = false
+            }
+            dispatch( upWtlist(data[2].list))
+
          
 
 

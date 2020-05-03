@@ -1,31 +1,34 @@
 import {
     combineReducers
 } from 'redux'
-// import {slide_listReducer,classify_listReducer} from './home/index';
+
+// 崔的
 import ticketDetail from '../reducer/ticketDetail';
 
-import {slide_listReducer,classify_listReducer,vipIndexReducer,hotsRecommendListReducer} 
+// 程程的reducer
+import {slide_listReducer,classify_listReducer,vipIndexReducer,hotsRecommendListReducer,wtListReducer} 
 from './home/index'
-// const rootReducer = combineReducers({
-//     goods:[]
-// })
 
+// 彩霞的
 import theatreList from './theatreList'
 
 const rootReducer = combineReducers({
+    // 程程的
     slide:slide_listReducer,
     classify:classify_listReducer,
     ticketDetail,
     vip:vipIndexReducer,
     hots:hotsRecommendListReducer,
+    wt:wtListReducer,
+   
+    // 彩霞的
+    theatreList,
 
-    theatreList
+    // 崔的
+    ticketDetail
 })
 
 
-// import theatreList from './theatreList'
-// export default combineReducers({
-//     theatreList
-// })
+
 
 export default rootReducer

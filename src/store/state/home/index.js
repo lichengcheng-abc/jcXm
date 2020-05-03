@@ -3,5 +3,6 @@ export default {
     classify_list:[],
     vipIndex:[],
     hotsRecommendList:[],
+    wtList:[]
     
 }

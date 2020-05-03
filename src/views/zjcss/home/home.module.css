@@ -3,7 +3,19 @@
 .homePage{
     display: flex;   
     justify-content:space-around;
-    margin-top: 15px;
+    /* margin-top: 15px; */
+    position:fixed;
+    top:0;
+    background-color: #ffffff;
+    width:100%;
+    z-index:2;
+    /* padding:30 0; */
+    height:80px;
+    padding-top: 6px;
+    box-sizing:border-box; 
+    border-bottom: 4px solid #f7f7f7;
+    padding-bottom: 80px;
+    
 }
 .dw{
     display: flex;   
@@ -158,8 +170,8 @@
 
 .wt{
     width:100%;
-    height:458px;
-    border:1px solid red;
+    height:900px;
+    /* border:1px solid red; */
     /* margin-left: 30px; */
     margin-top: 60px;
 }
@@ -177,14 +189,66 @@
 
 .wtx{
     width:100%;
-    height:332px;
+    height:360px;
     background-color: #836a45;
     padding-top: 30px;
     box-sizing:border-box; 
 }
 
+.wtx2{
+    /* display:flex;  */
+    /* width:720px;
+    /* overflow: hidden; */
+
+     white-space: nowrap;
+    text-overflow: ellipsis; 
+    overflow: hidden; 
+  
+
+    height:400px;
+    
+}
+
+.tj{
+    width:680px;
+    height:458px;
+    border:1px solid red;
+    margin-left: 30px;
+    margin-top: 60px;
+    
+}
+
+.tjs{
+    
+    margin-bottom: 30px;
+}
 
 
+
+
+
+
+/* 下边四个的按钮的样式 */
+
+.foot{
+
+    position:fixed;
+    bottom:0;
+
+    display:flex;
+    
+    justify-content:space-around;
+    height:92px;
+    width: 100%;
+    /* flex:1; */
+    background-color: #ffffff;
+    border-top: 4px solid #f7f7f7;
+    color:black
+    
+
+    
+
+ }
   
 
 

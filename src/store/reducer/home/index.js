@@ -50,3 +50,17 @@ export function  hotsRecommendListReducer (state=homeStateInit,{type,payload}) {
   return state
   
 }
+
+
+export function  wtListReducer (state=homeStateInit,{type,payload}) {
+  
+  state = JSON.parse(JSON.stringify(state))
+   if(type === homeActionType.UP_WTLIST){
+    
+     state.wtList = payload
+   }
+  // console.log( state )
+  return state
+  
+}
+
