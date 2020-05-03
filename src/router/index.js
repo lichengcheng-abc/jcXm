@@ -52,7 +52,7 @@ export default [
         component: ShowList,
     },
     {
-        path: '/theater/detail',
+        path: '/detail/:id',
         component: TheaterDetail,
     },
     {
