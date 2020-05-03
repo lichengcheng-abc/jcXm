@@ -29,18 +29,22 @@
 .pro img{
     width: 220px;
     height: 300px;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     margin-top: 20px;
 }
 .pro div{
     width: 450px;
     height: 270px;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     margin: 44px 0 0 28px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
+}
+.pro .price{
+    font-size: 40px;
+    color:#fefefe;
 }
 
 #server{
@@ -48,7 +52,7 @@
 }
 #server .choose{
     height: 82px;
-    border: 1px solid pink;
+    /* border: 1px solid pink; */
     display: flex;
     align-items:center;
     color: #666;
@@ -60,7 +64,7 @@
 #server .info{
     width: 606px;
     height: 180px;
-    background: red;
+    /* background: red; */
 }
 .info p{
     font-size: 36px;
@@ -71,16 +75,51 @@
     color: #666;
     font-size: 24px;
 }
-#server .vip p{
-    height: 94px;
+#server .vip{
+    background-color: #ccc;
+    opacity: 0.8;
+    height: 376px;
+    /* border: 1px solid red; */
+}
+#server .vip p:first-child{
+    height: 60px;
+    padding:0 30px 32px;
+    border-radius:15px;
+    display: flex;
+    align-items: center;
+    background-color: #000;
+    opacity:0.8;
+    display: flex;
+    justify-content: space-between;
+}
+#server .vip p:first-child span{
+    color: #F5DEA9;
+    font-size: 28px;
+}
+#server .vip p:nth-child(2){
+    color: #000;
+    height: 34px;
     padding: 22px 30px;
     margin-top: 20px;
+    display: flex;
+    align-items: center;
+    background-color: white;
+}
+#server .vip p:last-child{
+    color: #232323;
+    height: 110px;
+    padding: 22px 30px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    background-color:white;
 }
 #server .show .yan{
     height: 48px;
     color: #232323;
     margin-top:32px;
     font-size: 36px;
+    font-weight: bold;
 }
 .show .comment{
     height: 772px;
@@ -110,6 +149,7 @@
     color: #232323;
     margin-top:32px;
     font-size: 36px;
+    font-weight: bold;
 }
 .big{
     height: 288px;

@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import 'lib-flexible'
+import 'lib-flexible';
+import filters from './filters';
 import {
   BrowserRouter as Router,
 } from 'react-router-dom'
 
-import store from './store'
+import store from './store';
+
 import {
   Provider
 } from 'react-redux'
@@ -20,7 +22,8 @@ import './assets/css/index.css'
 
 // 移动端适配
 
-
+//全局的过滤器
+React.Component.prototype.$filters = filters;
 // 拦截
 axios.interceptors.request.use(config=>{
   config.url = '/api' + config.url
