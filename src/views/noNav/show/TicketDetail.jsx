@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import style from '../../zjcss/ticket/ticket.module.css';
 import {connect} from 'react-redux';
-import ticketCreate from '../../../store/actionCreator/ticketDetail';          
+import axios from 'axios';
+import ticketCreate,{upTicket} from '../../../store/actionCreator/ticketDetail';          
+import { bindActionCreators } from 'redux';
 class TicketDetail extends Component {
-    constructor(props){
-        super(props);
-        // this.static_data = {}
-        // this.state = {
-        //     ticketInfo:{}
-        // }
-    }
     render() {
+        const static_data = this.props.static_data
+        const city = this.props.city
+        const venue = this.props.venue
+        const time = this.props.time
+        const show_desc = this.props.show_desc
+        // console.log(show_desc.desc,0)
         return (
+            
             <div>
                 <div id={style.detail}>
                     <div className={style.header}>
@@ -20,10 +22,10 @@ class TicketDetail extends Component {
                         <i></i>
                     </div>
                     <div className={style.pro}>
-                        <p><img src="https://image.juooo.com/group1/M00/03/6C/rAoKmV4AZ3GAK-xpAABsQm0qZyQ219.jpg"/></p>
+                        <p><img src={static_data.pic}/></p>
                         <div>
-                            <p className={style.city}>hhhhhhhhhhh </p>
-                            <p className={style.price}>价格</p>
+                            <p className={style.city}>{static_data.show_name} </p>
+                            <p className={style.price}>{this.$filters.currency(static_data.price_range)} </p>
                         </div>
                     </div>
                 </div>
@@ -36,22 +38,23 @@ class TicketDetail extends Component {
                     </div>
                     <hr/>
                     <div className={style.info}>
-                        <p>时间</p>
-                        <p>大地址</p>
-                        <span>小地址</span>
+                        <p>{this.$filters.date(time.show_time_start_display)+'-'+this.$filters.date(time.show_time_end_display)} </p>
+                        <p>{city.city_name+'|'+venue.venue_name} </p>
+                        <span>{venue.venue_address} </span>
                     </div>
-                    <div className={style.vip}> 
-                        <p>VIP:V+会员享 国内免邮+双倍积分</p>
+                    <div className={style.vip}>
+                        <p onClick={()=>{this.props.history.push('/plus/index')}} ><span>橙PLUS卡 开通送￥200 最高省19.9元</span> <span>立即开卡></span> </p> 
+                        <p onClick={()=>{this.props.history.push('/vip/index/1')}}>VIP:V+会员享 国内免邮+双倍积分</p>
                         <hr/>
                         <p>入场：1.1以上或5周岁以上的儿童，凭票入场，其他儿童谢绝入场</p>
                     </div>
                     <div className={style.show}>
                         <p className={style.yan}>演出介绍</p>
-                        <p className={style.comment}><img src=""/>公告图片</p>
+                        <p className={style.comment}><img style={{height:'386px'}} src='https://image.juooo.com/group1/M00/03/97/rAoKmV6nsNKARQMoAAIHrAD_wQ0155.png'/></p>
                         <hr/>
                         <div className={style.content}>
                             <span>剧情简介</span>
-                            <p>剧情的内容</p>
+                            <p>大内容 </p>
                             <div>
                                 <img src=""/>
                             </div>
@@ -75,38 +78,29 @@ class TicketDetail extends Component {
             </div>
         )
     }
-    // async getDetail(){
-    //     // const schedular_id = this.props.match.params
-    //     //发送求情  得到数据
-    //     const {data} = await axios.get('/Schedule/Schedule/getScheduleInfo',{
-    //         params:{
-    //             schedular_id:111609
-    //         }
-    //     })
-    //     console.log(data)
-    //     this.static_data = data.static_data
-    //     console.log('111111111111111',this.static_data)
-    //     // this.setState({
-    //     //     ticketInfo:data,
-    //     // })
-    // }
     //https://api.juooo.com/Schedule/Schedule/getScheduleInfo?schedular_id=111609
+    //https://api.juooo.com/Show/Search/getShowList?category=37&city_id=36
     async componentDidMount(){
-        console.log('3',this)
-        this.props.upTicket()   
+        // const id = this.props.match.params.id
+        // console.log(id,'oo')
+        this.props.getTicketDetail() 
+        const {data} = await axios.get(`/Show/Search/getShowList?category=37&city_id=36}`)
+        console.log(data,6666666666666)
     }
 }
-function mapStateToProps(state){
+function mapStateToProps({ticketDetail}){
     return {
-        static_data:state.static_data
+        static_data:ticketDetail.static_data,
+        city:ticketDetail.city,
+        venue:ticketDetail.venue,
+        time:ticketDetail.time,
+        show_desc:ticketDetail.show_desc,
+        cate_id:ticketDetail.cate_id,
     }
 }
 function mapDispatchToProps(dispatch){
-    return {
-        upTicket(){
-            dispatch(ticketCreate.upTicket())
-        } 
-    }
+    //执行create下面的所有函数
+    return bindActionCreators(ticketCreate,dispatch)
 }
 export default connect(mapStateToProps,mapDispatchToProps)(TicketDetail)
 

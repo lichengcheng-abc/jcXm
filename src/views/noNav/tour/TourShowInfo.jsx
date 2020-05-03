@@ -1,82 +1,80 @@
 import React, { Component } from 'react';
 import style from '../../zjcss/tourShow/tourShow.module.css';
-import axios from 'axios';
+import tourShowCreate from '../../../store/actionCreator/tourShow';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 
-export default class TourShowinfo extends Component {
+class TourShowInfo extends Component {
     constructor(props){
         super(props);
-        this.state = {
-            city:'',
-            show:'',
-            time:'',
-            showList:[]
-        }
     }
     render() {
-        console.log(this.state)
-        const yanchuList = this.state 
-        // if(yanchuList.city!=''&&yanchuList.show!=''&&yanchuList.time!=''&&yanchuList.showList.length!=0){
-        //     console.log('11111111111111111111',yanchuList)
-       
-            return (
-                <div>
-                    <div id={style.detail}>
-                        <div className={style.header}>
-                            <i></i>
-                            <span>演出详情</span>
-                            <i></i>
-                        </div>
-                        <div className={style.pro}>
-                            <p><img src=""/></p>
-                            <div>
-                                <p className={style.city}>hhhhhhh </p>
-                                <p className={style.show}>6个城市 </p>
-                                <p className={style.price}>时间</p>
-                            </div>
-                        </div>
+        const name = this.props.name;
+        const city_num = this.props.city_num;
+        const show_num = this.props.show_num;
+        const start_time = this.props.start_time;
+        const end_time = this.props.end_time;
+        const tourShowList = this.props.tourShowList;
+        return (
+            <div>
+                <div id={style.detail}>
+                    <div className={style.header}>
+                        <i></i>
+                        <span>演出详情</span>
+                        <i></i>
                     </div>
-
-                    <div id={style.music}>
-                        <ul>
-                            <li>
-                                <div className={style.time}>
-                                    <span>09/</span> 
-                                    <span>11-13</span>
-                                </div>
-                                <div className={style.des}>
-                                    <p>音乐剧</p>
-                                    <p>地址</p>
-                                    <p>价格</p>
-                                </div>
-                            </li>
-                        </ul>
+                    <div className={style.pro}>
+                        <p><img src="https://image.juooo.com/group1/M00/04/3E/rAoKNV59rlWAUODrAABlWN_fCvM347.jpg"/></p>
+                        <div>
+                            <p className={style.city}>{name} </p>
+                            <p className={style.show}>{city_num} 个城市 | {show_num}场演出 </p>
+                            <p className={style.price}>{this.$filters.date(start_time)} - 10.03 </p>
+                        </div>
                     </div>
                 </div>
-            )
 
-        // }else{
-        //     console.log('2222222222222222',yanchuList)
-        // }
-
-    }
-    async getShowList(){
-        // const id = this.props.match.params;
-        const {data} = await axios.get('/show/tour/getInfo',{
-            params:{
-                id:2
-            }
-        })
-        console.log(data,data.city_num)
-        this.setState({
-            city:data.name,
-            show:data.city_num,
-            time:data.start_time+'-'+data.end_time,
-            showList:data.list
-        })
-        console.log(3333333333333333,this.state)
+                <div id={style.music}>
+                    {
+                        tourShowList.map(v=>(
+                            <ul onClick={()=>{
+                                this.props.history.push(`/ticket/${v.sch_id}`)
+                            }} key={v.venue_id}>
+                                <li>
+                                    <div className={style.time}>
+                                        <span>09/</span> 
+                                        <span>11-13</span>
+                                    </div>
+                                    <div className={style.des}>
+                                        <p>{v.sch_name} </p>
+                                        <p>{v.city_name} | {v.venue_name} </p>
+                                        <p>{this.$filters.currency(v.min_price)} 起 </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        )) 
+                    }
+                </div>
+            </div>
+        )
     }
     //https://api.juooo.com/show/tour/getInfo?id=2
     async componentDidMount(){
-        this.getShowList()
+        console.log('222',this.props)
+        this.props.getTourShowList() 
     }
 }
+function mapStateToProps({tourShow}){
+    return {
+        name:tourShow.name,
+        city_num:tourShow.city_num,
+        show_num:tourShow.show_num,
+        start_time:tourShow.start_time,
+        end_time:tourShow.end_time,
+        tourShowList:tourShow.tourShowList
+    }
+}
+function mapDispatchToProps(dispatch){
+    //必须先得执行这个return的这个，不然得不到componentDidMount
+    return bindActionCreators(tourShowCreate,dispatch)
+}
+export default connect(mapStateToProps,mapDispatchToProps)(TourShowInfo)

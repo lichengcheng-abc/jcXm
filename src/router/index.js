@@ -54,11 +54,11 @@ export default [
         component: ShowList,
     },
     {
-        path: '/theater/detail',
+        path: '/detail/:id',
         component: TheaterDetail,
     },
     {
-        path: '/ticket',
+        path: '/ticket/:id',
         component: TicketDetail,
     },
     {
