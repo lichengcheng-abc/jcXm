@@ -3,7 +3,7 @@ export default function(state=theaterDtailInit,{type,playload,payload}){
     state = JSON.parse(JSON.stringify(state))
         // console.log(playload.theatre_detail)
         if(type = 'GET_LIST_DETAI'){
-            console.log(payload)
+            // console.log(payload)
             
             if(playload){            
                 state.list = playload
@@ -12,7 +12,7 @@ export default function(state=theaterDtailInit,{type,playload,payload}){
             if(payload){
                 state.result = payload
             }
-            console.log(state)
+            // console.log(state)
                 
         }
    

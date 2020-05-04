@@ -40,6 +40,16 @@ export function getClassify_list(payload) {
     }
  }
 
+ export function upShowList(payload) {
+
+    //  console.log( payload)
+   
+    return {
+         type:homeActionType.UP_SHOWLIST,
+         payload
+    }
+ }
+
 
 export default {
     upSlide(){
@@ -104,6 +114,43 @@ export default {
         }
      
     },
+
+    upShowList(){
+        //   console.log( this )
+            return async (dispatch)=> {
+            // console.log(this.props.pageIndex)
+                const data = await axios.get(
+                    `/Show/Search/getShowList?city_id=0&category=&keywords=&venue_id=&start_time=&page=${this.props.pageIndex}&referer_type=index&version=6.1.1&referer=2`
+                  );
+                  dispatch(upShowList( data.data.list))
+                //   console.log(data.data.list);
+                 
+                  let waterfallLeft = []; //左边瀑布流盒子
+                  let waterfallRight = []; //右边瀑布流盒子
+                  this.props.showList.forEach((v, i) => {
+                    if (i % 2 === 0) {
+                      waterfallLeft.push(v);
+                    } else {
+                      waterfallRight.push(v);
+                    }
+                  });
+                  // console.log(waterfallLeft,waterfallRight)
+                  this.setState(
+                    {
+                      waterfallLeft,
+                      waterfallRight,
+                    },
+                    () => {
+                      this.switch = true;
+                    //   请求结束可以请求下次的数据了
+                    }
+                  );
+             
+    
+    
+            }
+         
+        },
 
     
 

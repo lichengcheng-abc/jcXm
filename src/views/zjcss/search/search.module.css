@@ -1,0 +1,7 @@
+.ss{
+    display: flex; 
+    box-sizing:border-box; 
+   padding-top: 6px;
+   margin-top: 10px;
+   margin-left: 20px;
+}

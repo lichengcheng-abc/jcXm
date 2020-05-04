@@ -10,6 +10,6 @@ export default function(state=ticketInit,{type,payload}){
         state.show_desc = payload.static_data.show_desc;
         state.cate_id = payload.static_data.cate_parent_id;
     }
-    console.log(state,777)
+    // console.log(state,777)
     return state
 }

@@ -7,9 +7,9 @@ import ticketDetail from '../reducer/ticketDetail';
 import tourShow from '../reducer/tourShow';
 
 // 程程的reducer
-import {slide_listReducer,classify_listReducer,vipIndexReducer,hotsRecommendListReducer,wtListReducer} 
+import {slide_listReducer,classify_listReducer,vipIndexReducer,hotsRecommendListReducer,wtListReducer,showListReducer} 
 from './home/index'
-
+import {searchListReducer}  from './search/index'
 // 彩霞的
 import theatreList from './theatreList'
 import theaterDetail from './theaterDetail'
@@ -22,9 +22,12 @@ const rootReducer = combineReducers({
     vip:vipIndexReducer,
     hots:hotsRecommendListReducer,
     wt:wtListReducer,
-   
+    showList:showListReducer,
+    searchList:searchListReducer,
+
+
+
     // 彩霞的
-   
     theatreList,
     theaterDetail,
 
@@ -40,3 +43,9 @@ const rootReducer = combineReducers({
 
 
 export default rootReducer
+
+   
+
+
+
+
