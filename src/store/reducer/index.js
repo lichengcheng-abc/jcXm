@@ -5,6 +5,8 @@ import {
 // 崔的
 import ticketDetail from '../reducer/ticketDetail';
 import tourShow from '../reducer/tourShow';
+import touring from '../reducer/touring';
+import cardhappy from '../reducer/cardhappy';
 
 // 程程的reducer
 import {slide_listReducer,classify_listReducer,vipIndexReducer,hotsRecommendListReducer,wtListReducer} 
@@ -31,6 +33,8 @@ const rootReducer = combineReducers({
     // 崔的
     ticketDetail,
     tourShow,
+    touring,
+    cardhappy,
 })
 
 

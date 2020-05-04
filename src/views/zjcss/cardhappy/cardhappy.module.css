@@ -1,0 +1,122 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.header{
+    width: 100%;
+    height: 88px;
+    text-align: center;
+    line-height: 88px;
+    font-size: 36px;
+    color: #000;
+}
+.header span:nth-of-type(1){
+    margin-left: 30px;
+    float: left;
+    font-size: 50px;
+}
+.header span:nth-of-type(3){
+    margin-right: 30px;
+    float: right;
+    font-size: 50px;
+}
+.happy img{
+    width: 644px;
+    height: 340px;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%);
+    margin-top: 30px;
+}
+.happy p{
+    position: absolute;
+    left: 90px;
+    top: 150px;
+    color: #fff;
+    font-size: 40px;
+}
+.happy span:nth-of-type(1){
+    position: absolute;
+    left: 90px;
+    top: 380px;
+    color: #fff;
+    font-size: 50px;
+}
+.happy span:nth-of-type(2){
+    position: absolute;
+    right: 90px;
+    top: 400px;
+    font-size: 24px;
+    color: #fff;
+}
+.buy{
+    width: 568px;
+    height: 90px;
+    background-color: orange;
+    text-align: center;
+    line-height: 90px;
+    padding: 0 30px;
+    margin-left: 55px;
+    margin-top: 45px;
+    border-radius: 45px;
+}
+.buy p{
+    color: #fff;
+    font-size: 32px;
+}
+#change{
+    padding: 0 30px;
+}
+#change .conn{
+    height: 48px;
+    color: #232323;
+    margin-bottom:32px;
+    font-size: 36px;
+    font-weight: bold;
+}
+#change span{
+    float: right;
+}
+.big{
+    height: 288px;
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0;
+}
+#change img{
+    width: 210px;
+    height: 288px;
+    border: 1px solid pink;
+}
+#change section{
+    width: 450px;
+    height: 288px;
+    /* background: salmon; */
+    position: relative;
+}
+section p:nth-of-type(1){
+    height: 32px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    color: #232323;
+    font-size: 32px;
+}
+section p:nth-of-type(2){
+    height: 92px;;
+    color: #232323;
+    font-size: 32px;
+    margin: 18px 0;
+}
+section p:nth-of-type(3){
+    height: 28px;
+    color: #666;
+    font-size: 24px;
+}
+section p:nth-of-type(4){
+    color: red;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
