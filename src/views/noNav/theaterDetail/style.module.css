@@ -108,7 +108,7 @@
 .con_content{
     width: 100%;
     height: 288px;
-    margin: 15px auto;
+    margin: 30px auto;
     /* background-color: red; */
     display: flex;
     justify-content: space-between;
@@ -170,4 +170,12 @@
     height: 42px;
     font-size: 32px;
     display: inline-block;
+}
+.end_more{
+    width: 100%;
+    height: 88px;
+    text-align: center;
+    line-height: 88px;
+    color: #999999;
+    font-size: 24px;
 }

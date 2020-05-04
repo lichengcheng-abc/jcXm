@@ -15,6 +15,7 @@ from './home/index'
 // 彩霞的
 import theatreList from './theatreList'
 import theaterDetail from './theaterDetail'
+import CardproductIndex from './CardproductIndex'
 
 const rootReducer = combineReducers({
     // 程程的
@@ -25,10 +26,10 @@ const rootReducer = combineReducers({
     hots:hotsRecommendListReducer,
     wt:wtListReducer,
    
-    // 彩霞的
-   
+    // 彩霞的  
     theatreList,
     theaterDetail,
+    CardproductIndex,
 
     // 崔的
     ticketDetail,
