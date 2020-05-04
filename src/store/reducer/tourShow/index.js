@@ -10,6 +10,6 @@ export default function(state=tourShowInit,{type,payload}){
         state.end_time = payload.end_time;
         state.tourShowList = payload.list;
     }
-    console.log(state,71)
+    // console.log(state,71)
     return state
 }

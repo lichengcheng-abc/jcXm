@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-
 export default class PlusIndex extends Component {
     render() {
         return (
@@ -8,4 +7,6 @@ export default class PlusIndex extends Component {
             </div>
         )
     }
+
 }
+

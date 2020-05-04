@@ -44,7 +44,11 @@ class TheaterDetail extends Component {
                             </div>
                     {
                         result.map(v=>(                          
-                            <div key = {v.schedular_id} className={style.con}>
+                            <div key = {v.schedular_id} className={style.con}
+                            onClick={()=>{
+                                this.props.history.push('/ticket/'+v.schedular_id)
+                            }}
+                            >
                                 <div className={style.con_content}>
                                     <p className={style.image}>
                                         <img src={v.pic} alt=""/>
@@ -62,9 +66,7 @@ class TheaterDetail extends Component {
                                                 
                                                
                                             )) 
-                                            }
-                                            
-                                            
+                                            }                                           
                                          </p>
                                         <p className={style.price}><span className={style.p_price}>￥{v.min_price}</span>起</p>
                                         
@@ -74,7 +76,7 @@ class TheaterDetail extends Component {
                         ))
                        
                     }
-                    
+                    <p className={style.end_more}>没有更多了</p>
                 </section>
             </div>
         )
