@@ -22,7 +22,12 @@ class TheatreList extends Component {
                             <div key ={v.id}>  
                             <div className={style.stylistic}>
                                     <div className={style.stylistic_info}>                          
-                                        <img className={style.stylistic_pic} width={100} src={v.pic} alt=""/>
+                                        <img className={style.stylistic_pic} width={100} src={v.pic} alt=""
+                                        onClick={()=>{
+                                            this.props.history.push('/detail/'+v.id)
+                                           console.log(v.id) 
+                                        }}
+                                        />
                                         <div className={style.stylistic_con}>
                                             <p className={style.stylistic_name}>{v.name}</p>
                                             <p className={style.stylistic_count}>{v.count}场在售演出</p>
