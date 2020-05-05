@@ -1,0 +1,218 @@
+/* body{
+    background-color: #f5f5f5;
+
+} */
+.ccc{
+    height:100%;
+    overflow: hidden;
+}
+.myjuooo{
+    /*background-color: #61dafb;*/
+    font-size:24px;
+
+}
+
+/*头部*/
+.myjuooo_top{
+    /*大的黄色背景图*/
+    width: 100%;
+    height: 420px;
+    position: relative;
+    background: url("../../../assets/img/myjuooo/mybgPage.png") no-repeat;
+    background-size:100% ;
+}
+.myjuooo_set{
+    /*设置*/
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    color: #ffffff;
+    font-size:36px;
+}
+.myjuooo_me{
+    /*个人信息大白块*/
+    width: 690px;
+    height:310px;
+    position: absolute;
+    background: #fff;
+    box-shadow: 0 4px 30px 2px rgba(35,35,35,.08);
+    border-radius: 8px;
+    margin: 115px 30px 0;
+    text-align: left;
+}
+.myjuooo_metop{
+    /*头像 名称 ID 小条*/
+    width: 690px;
+    height: 102px;
+    padding: 0 32px;
+    position: relative;
+}
+.myjuooo_mypic{
+    /*头像*/
+    width: 120px;
+    height: 120px;
+    border-radius: 100%;
+    text-align: center;
+    vertical-align: middle;
+    background-size: 100%;
+    margin-top: -24px;
+    margin-right: 28px;
+    background-image: url("../../../assets/img/myjuooo/myjuooo-mypic.png") ;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+.myjuooo_me .myjuooo_myname{
+    /*姓名*/
+    font-size: 30px;
+    font-weight: 700;
+    position: absolute;
+    left: 180px;
+    top:22px
+}
+.myjuooo_me .myjuooo_myid{
+    /*ID*/
+    font-size: 24px;
+    position: absolute;
+    bottom: 0;
+    left: 180px;
+}
+
+.myjuooo_myvip{
+    /*VIP黄色小块*/
+    display: block;
+    width: 162px;
+    float: right;
+    font-size: 28px;
+    color: #454341;
+    font-weight: 700;
+    padding: 7px 31px 7px 30px;
+    background: linear-gradient(-45deg,#f5dea9,#f8d583);
+    border-radius: 27px 0 0 27px;
+}
+
+.myjuooo_bottom{
+    /*白色大块中的四小块*/
+    width: 690px;
+    height: 160px;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: space-around;
+}
+.myjuooo_btm{
+    /*四小块的设置*/
+    display: inline-block;
+    width: 172px;
+    height: 52px;
+    margin: 30px 0  40px 0;
+}
+.myjuooo_btm_num{
+    /*四小块数字*/
+    display: block;
+    margin: 0  auto;
+    text-align: center;
+    font-size: 40px;
+    color: #ff6743;
+}
+.myjuooo_btm_rline{
+    /*四小块的中间线*/
+    display: inline-block;
+    width: 2px;
+    background-color:  #ebebeb;
+    height: 60px;
+    margin-top: 50px;
+}
+.MyjuoooMine{
+    /*四小块的文字*/
+    margin-top: 10px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 500;
+}
+.MyjuoooMine a {
+    /*四小块文字是个链接*/
+    color: #666;
+    text-decoration: none;
+}
+.myjuooo_btm_msg p{
+    /*四小块的第四块*/
+    text-align: center;
+    height: 34px;
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+.myjuooo_btm_msg{
+    /*四小块第四块*/
+    display: inline-block;
+    width: 172px;
+    height: 52px;
+    margin: auto;
+}
+.myjuooo_btm_opennow{
+    /*四小块第四块立即开通*/
+    font-size:26px;
+    font-weight: 600;
+}
+
+/*VIP*/
+.myjuooo_vip{
+    /*黑色vip广告*/
+    width: 750px;
+    height: 180px;
+}
+.myjuooo_vip img{
+    /*黑色VIP图片*/
+    width: 740px;
+    height: 180px;
+    margin: 0 auto;
+}
+
+/*我的功能部分*/
+.myjuooo_mine_box{
+    /*我的功能盒子*/
+    width: 690px;
+    height: 177px;
+    margin: 0 auto 24px auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 8px;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    font-size: 24px;
+}
+.myjuooo_my{
+    /*我的功能小块*/
+    /* width: 86px; */
+    /* height: 30px; */
+    /* margin: 16.5px auto 20px auto; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.myjuooo_my img{
+    /*图片*/
+    width: 66px;
+    height: 66px;
+}
+.myjuooo_my_msgOne{
+    /* wodegongneng */
+    height:32px;
+    width:100%;
+    text-decoration:none;
+}
+
+.myjuooo_my_msg{
+    /*客服*/
+    height: 32px;
+    width: 100%;
+    color: #ff6743;
+    text-decoration: none;
+}
+.myjuooo_my_msg a {
+    /*客服文字*/
+    color: #232323;
+    text-decoration: none;
+}
