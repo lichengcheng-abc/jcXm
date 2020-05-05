@@ -4,7 +4,7 @@ import {
     NavLink,
     withRouter
 } from 'react-router-dom';
-import '../assets/myjuooo/css/myjuooo.css'
+// import '../assets/myjuooo/css/myjuooo.css'
 import MyjuoooMine from '../components/myjuooo/MyjuoooMine'
 import MyjuoooMy from '../components/myjuooo/MyjuoooMy'
 import myjuooovippic from '../assets/myjuooo/img/myjuooo_vip.png'
