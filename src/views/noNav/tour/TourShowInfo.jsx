@@ -19,7 +19,7 @@ class TourShowInfo extends Component {
             <div>
                 <div id={style.detail}>
                     <div className={style.header}>
-                        <span onClick={()=>{this.props.history.go(-1)}} >{'<'} </span>
+                        <i></i>
                         <span>演出详情</span>
                         <i></i>
                     </div>

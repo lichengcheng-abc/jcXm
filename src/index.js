@@ -5,7 +5,6 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'lib-flexible';
 import filters from './filters';
-import Loading from './components/common/Loading';
 import {
   BrowserRouter as Router,
 } from 'react-router-dom'
@@ -22,8 +21,6 @@ import axios from 'axios'
 import './assets/css/index.css'
 
 // 移动端适配
-// 在上边引入了
-
 
 //全局的过滤器
 React.Component.prototype.$filters = filters;
@@ -33,6 +30,7 @@ axios.interceptors.request.use(config=>{
   return config
 })
 axios.interceptors.response.use(({data})=>{
+ 
   return data
 })
 

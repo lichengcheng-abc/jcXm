@@ -3,7 +3,6 @@ export default {
     UP_ClASSIFY:'UP_ClASSIFY',
     UP_VIPINDEX:'UP_VIPINDEX',
     UP_HOTS:'UP_HOTS',
-    UP_WTLIST:'UP_WTLIST',
-    UP_SHOWLIST:'UP_SHOWLIST',
+    UP_WTLIST:'UP_WTLIST'
     
 }
