@@ -5,4 +5,6 @@ export default {
     time:{},
     show_desc:{},
     cate_id:null,
+    tips:{},
+    recommList:[],
 }
