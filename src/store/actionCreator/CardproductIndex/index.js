@@ -34,7 +34,11 @@ export default {
     getHotBannerList(){
         return async (dispatch)=>{
             const {data} = await axios.get('/Card/index/hotBanner')
+            if(data.length>0){
+                this.state.isloading = false
+            } 
             dispatch(getBannerList(data))
+            
         }
     },
 }

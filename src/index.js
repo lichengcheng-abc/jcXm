@@ -21,8 +21,6 @@ import axios from 'axios'
 import './assets/css/index.css'
 
 // 移动端适配
-// 在上边引入了
-
 
 //全局的过滤器
 React.Component.prototype.$filters = filters;

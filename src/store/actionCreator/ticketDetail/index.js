@@ -2,7 +2,7 @@ import axios from 'axios';
 import ticketType from '../../actionType/ticketDetail';
 //生成action来更新数据的
 export function upTicket(payload){
-    // console.log(payload,99)
+    console.log(payload,99)
     return {
         type:ticketType.UP_TICKET,
         payload
@@ -19,7 +19,7 @@ export default {
                     schedular_id:111609
                 }
             })
-            // console.log('1111111',data)
+            console.log('1111111',data)
             dispatch(upTicket(data))
         }
     }

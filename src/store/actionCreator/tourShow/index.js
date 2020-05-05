@@ -17,7 +17,7 @@ export default {
                     id:2
                 }
             })
-            // console.log(111,data)
+            console.log(111,data)
             dispatch(upTourShow(data))
         }
     }

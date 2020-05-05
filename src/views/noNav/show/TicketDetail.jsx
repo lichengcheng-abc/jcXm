@@ -17,7 +17,7 @@ class TicketDetail extends Component {
             <div>
                 <div id={style.detail}>
                     <div className={style.header}>
-                        <span onClick={()=>{this.props.history.go(-1)}} >{"<"} </span>
+                        <i></i>
                         <span>演出详情</span>
                         <i></i>
                     </div>
@@ -38,7 +38,7 @@ class TicketDetail extends Component {
                     </div>
                     <hr/>
                     <div className={style.info}>
-                        <p>{this.$filters.date(time.show_time_start_display)+'-'+(this.$filters.date(time.show_time_end_display)).slice(5,10)} </p>
+                        <p>{this.$filters.date(time.show_time_start_display)+'-'+this.$filters.date(time.show_time_end_display)} </p>
                         <p>{city.city_name+'|'+venue.venue_name} </p>
                         <span>{venue.venue_address} </span>
                     </div>
@@ -85,7 +85,7 @@ class TicketDetail extends Component {
         // console.log(id,'oo')
         this.props.getTicketDetail() 
         const {data} = await axios.get(`/Show/Search/getShowList?category=37&city_id=36}`)
-        // console.log(data,6666666666666)
+        console.log(data,6666666666666)
     }
 }
 function mapStateToProps({ticketDetail}){

@@ -5,17 +5,17 @@ import {
 // 崔的
 import ticketDetail from '../reducer/ticketDetail';
 import tourShow from '../reducer/tourShow';
-import touring from '../reducer/touring';
-import cardhappy from '../reducer/cardhappy';
 
 // 程程的reducer
-import {slide_listReducer,classify_listReducer,vipIndexReducer,hotsRecommendListReducer,wtListReducer,showListReducer} 
+import {slide_listReducer,classify_listReducer,vipIndexReducer,hotsRecommendListReducer,wtListReducer} 
 from './home/index'
-import {searchListReducer}  from './search/index'
+
 // 彩霞的
 import theatreList from './theatreList'
 import theaterDetail from './theaterDetail'
 import CardproductIndex from './CardproductIndex'
+import plusIndex from './plus'
+import vipIndex from './vip'
 
 const rootReducer = combineReducers({
     // 程程的
@@ -25,23 +25,17 @@ const rootReducer = combineReducers({
     vip:vipIndexReducer,
     hots:hotsRecommendListReducer,
     wt:wtListReducer,
-    showList:showListReducer,
-    searchList:searchListReducer,
-
-
-
-    // 彩霞的
    
     // 彩霞的  
     theatreList,
     theaterDetail,
     CardproductIndex,
+    plusIndex,
+    vipIndex,
 
     // 崔的
     ticketDetail,
     tourShow,
-    touring,
-    cardhappy,
 })
 
 
@@ -51,9 +45,3 @@ const rootReducer = combineReducers({
 
 
 export default rootReducer
-
-   
-
-
-
-
