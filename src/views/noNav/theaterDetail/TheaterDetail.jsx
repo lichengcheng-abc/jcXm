@@ -2,16 +2,24 @@ import React, { Component } from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import style from './style.module.css'
+import Loading from '../../../components/common/Loading'
 import detailCreator from '../../../store/actionCreator/theaterDetail'
 class TheaterDetail extends Component {
+    constructor() {
+        super();
+        this.state = {
+            isLoading:true
+        };
+
+    }
     render() {
         const {list} = this.props
         const {result} = this.props
-        return (   
+        const thDetail = (
             <div>
                 <header className={style.header}>
                     <div className={style.header_back}>
-                        <i className={style.back}
+                        <i className={style.goback}
                             onClick={()=>{
                                 this.props.history.go(-1)
                             }}
@@ -38,7 +46,7 @@ class TheaterDetail extends Component {
                     </div>
                     
                 </header>
-                <section>
+                <section className={style.section}>
                 <div className={style.section_title}>
                                 热门演出
                             </div>
@@ -55,9 +63,9 @@ class TheaterDetail extends Component {
                                     </p>
                                     <div className={style.con_right}>
                                         <p className={style.date}>{v.end_show_time}</p>
-                                        <p className={style.date}>{v.name}</p>
+                                        <p className={style.date_name}>{v.name}</p>
                                         <p className={style.con_add}>{list.city_name} | {list.theatre_address}</p>
-                                        <p className={style.support_desc}>
+                                        <span className={style.support_desc}>
                                             {
                                                v.support_desc.map((a,index)=>(
                                                 <div k= {index}>
@@ -67,8 +75,8 @@ class TheaterDetail extends Component {
                                                
                                             )) 
                                             }                                           
-                                         </p>
-                                        <p className={style.price}><span className={style.p_price}>￥{v.min_price}</span>起</p>
+                                         </span>
+                                        <spsan className={style.price}><span className={style.p_price}>￥{v.min_price}</span>起</spsan>
                                         
                                     </div>
                                 </div>
@@ -76,8 +84,15 @@ class TheaterDetail extends Component {
                         ))
                        
                     }
-                    <p className={style.end_more}>没有更多了</p>
+                    <span className={style.end_more}>没有更多了</span>
                 </section>
+            </div>
+            )
+        return (   
+            <div>
+                {
+                    this.state.isLoading ? <Loading/> : thDetail
+                }
             </div>
         )
     }

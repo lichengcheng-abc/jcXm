@@ -17,6 +17,8 @@ import {searchListReducer,hotSearchReducer}  from './search/index'
 import theatreList from './theatreList'
 import theaterDetail from './theaterDetail'
 import CardproductIndex from './CardproductIndex'
+import plusIndex from './plus'
+import vipIndex from './vip'
 
 const rootReducer = combineReducers({
     // 程程的
@@ -38,6 +40,8 @@ const rootReducer = combineReducers({
     theatreList,
     theaterDetail,
     CardproductIndex,
+    plusIndex,
+    vipIndex,
 
     // 崔的
     ticketDetail,
