@@ -39,7 +39,7 @@ class Show extends React.Component{
                     <div className={style.show_type_wrap}>
                         <div className={style.show_type}>
                             <ul className={style.show_type_ul}>
-                                <li onClick={this.setcategory.bind(this,0)}>
+                                <li id='1' onClick={this.setcategory.bind(this,0)}>
                                     <NavLink to={"/show/showsLibrary"}>全部</NavLink>
                                 </li>
                                 <li onClick={this.setcategory.bind(this,35)}>
@@ -136,7 +136,7 @@ class Show extends React.Component{
         )
     }
     async componentDidMount(){
-        console.log("1111111111111")
+        // console.log("1111111111111")
         const {data} = await axios.get("/city/city/getCityList?version=6.1.1&referer=2")
             this.setState({
                 city_list:data.city_list
@@ -150,20 +150,19 @@ class Show extends React.Component{
     }
     async setcategory(category = 0){
         let page = this.state.page
-        console.log("222222222")
+        // console.log("222222222")
         const{data} = await axios.get ("/Show/Search/getShowList?city_id=0&category="+category+"&page="+page+"&referer_type=&version=6.1.1&referer=2",{
             params:{
                 page:this.state.page,
             }
 
         })
-        // console.log(data.list)
         // 一旦状态发生改变, render会执行
       this.setState({
           page:data.page,
           list:data.list,
       })
-        console.log(data)
+        // console.log(data)
     }
     async Loadmore(category = 0){
         this.setState({
@@ -186,7 +185,7 @@ class Show extends React.Component{
         this.setState({
             visible:true,
         });
-        console.log(33333333)
+        // console.log(33333333)
     };
 
     onClose=()=>{
