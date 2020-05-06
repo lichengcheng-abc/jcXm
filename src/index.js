@@ -5,7 +5,6 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'lib-flexible';
 import filters from './filters';
-import Loading from './components/common/Loading';
 import {
   BrowserRouter as Router,
 } from 'react-router-dom'
@@ -33,6 +32,7 @@ axios.interceptors.request.use(config=>{
   return config
 })
 axios.interceptors.response.use(({data})=>{
+ 
   return data
 })
 

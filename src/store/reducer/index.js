@@ -7,7 +7,6 @@ import ticketDetail from '../reducer/ticketDetail';
 import tourShow from '../reducer/tourShow';
 import touring from '../reducer/touring';
 import cardhappy from '../reducer/cardhappy';
-import group from '../reducer/group';
 
 // 程程的reducer
 import {slide_listReducer,classify_listReducer,vipIndexReducer,hotsRecommendListReducer,wtListReducer,showListReducer} 
@@ -43,7 +42,6 @@ const rootReducer = combineReducers({
     tourShow,
     touring,
     cardhappy,
-    group,
 })
 
 

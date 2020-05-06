@@ -36,12 +36,12 @@ class CardproductCardhappy extends Component {
                         cardhappyList.map(v=>(
                             <div onClick={()=>{this.props.history.push(`/ticket/${v.schedular_id}?card_group_id=228`)}} key={v.schedular_id} className={style.big}>
                                 <p><img src={v.pic} /></p>
-                                <div className={style.productor}>
+                                <section>
                                     <p>{this.$filters.date( v.month_day)} </p>
                                     <p>{v.schedular_name} </p>
                                     <p>{v.city_name} | {v.venue_name} </p>
                                     <p>{v.leastDiscount} 起 </p>
-                                </div>
+                                </section>
                             </div> 
                         ))
                     }
