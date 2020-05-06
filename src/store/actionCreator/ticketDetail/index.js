@@ -25,6 +25,9 @@ export default {
                     schedular_id
                 }
             })
+            if(data){
+                this.state.isLoading = false
+            }
             dispatch(upTicket(data))
         }
     },

@@ -20,6 +20,7 @@ import VipIndex from '../views/noNav/cards/VipIndex'
 
 
 import Error from '../views/Error'
+
 export default [
     {
         path: '/activity/group',
