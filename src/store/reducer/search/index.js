@@ -23,3 +23,16 @@ export function searchListReducer (state=searchStateInit,{type,payload,pageNo}) 
     
  }
 
+
+ export function hotSearchReducer (state=searchStateInit,{type,payload,pageNo}) {
+ 
+    
+  state = JSON.parse(JSON.stringify(state))
+   if(type === searchActionType.UP_HOT_SEARCH){
+   
+      state.hotSearchList = payload
+   }
+  return state
+  
+}
+

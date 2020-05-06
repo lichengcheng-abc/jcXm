@@ -10,6 +10,16 @@ export function getSearchList(payload,pageNo) {
     }
  }
 
+ export function getHotSearchList(payload) {
+   
+  return {
+       type:searchActionType.UP_HOT_SEARCH,
+       payload,
+      
+  }
+}
+
+
  export default {
     upSearchList(val){
       
@@ -26,6 +36,7 @@ axios.get(`/Show/Search/getShowList?city_id=&category=&keywords=${val}_id=&start
             dispatch(getSearchList( data.data.list,this.state.pageNo))
             // console.log( data.data.list )
 
+           
           
             let waterfallLeft = []; //左边瀑布流盒子
             let waterfallRight = []; //右边瀑布流盒子
@@ -54,8 +65,28 @@ axios.get(`/Show/Search/getShowList?city_id=&category=&keywords=${val}_id=&start
         }
      
     },
+
+    upHotSearchList(){
+      
+      return async  (dispatch)=> {
+         
+          const data = await 
+ axios.get(`/Show/Search/getNewHotWord?version=6.1.1&referer=2`)
+          
+          //  console.log( data.data )
+          dispatch(getHotSearchList( data.data))
+          
+
+        
+     
+      }
+   
+  },
    
 
  }
+
+
+
 
 

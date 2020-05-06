@@ -2,79 +2,226 @@ import React, { Component } from 'react'
 import style from '../../zjcss/search/search.module.css'
 import searchActionCreator from '../../../store/actionCreator/search'
 import { connect } from 'react-redux'
- class Search extends Component {
-     constructor(){
+class Search extends Component {
+    constructor() {
         super()
         this.rewaterfall = null;
         this.reLeft = null; //瀑布流左边元素
         this.reRight = null; //瀑布流右边元素
         this.switch = false; //防止瀑布流请求过快  开始关闭 因为组件加载时会调用一次
 
-        this.state ={
-            ele:'',
+        this.state = {
+            ele: '',
             waterfallLeft: [],
             waterfallRight: [],
-            pageNo:1,
-           
-        } 
-     }
-    render() {
-        return (
-            <div>
+            pageNo: 1,
 
-                <div style={{display:'flex',marginBottom:'20px'}}>
-                    <span className={style.ss} 
-                    style={{width:'300px',height:'30px',border:'1px solid #e4e4e5', borderRadius: '40px', backgroundColor: '#f5f5f5'}}>
+          
+            show:null,
+           
+
+        }
+    }
+    render() {
+
+
+        const pubu = 
+        <div style={{display:'flex',flexDirection:'column',marginTop: '60px'}}>
+
+<div ref={(el) => (this.rewaterfall = el)} style={{ marginLeft: '10px', marginTop: '10px' }}>
+            <div ref={(el) => (this.reLeft = el)} style={{ width: '166px', float: 'left', marginRight: '10px' }} >
+                {
+
+                    this.state.waterfallLeft.map((v, index) => (
+
+                        <h6 key={index}
+                            style={{ position:'relative',width: '169px', height: '340px', marginBottom: '5px', border: '1px solid #e4e4e5', borderRadius: '10px' }}
+                            onClick={() => {
+                                this.props.history.push('/ticket/' + v.schedular_id)
+                            }}
+                        >
+
+                 <span style={{position:'absolute',right:'5px',top:'5px',color:'#ffffff',backgroundColor:'black',opacity:'0.8'}}>{v.city_name}</span>
+                            <img src={v.pic} alt="" style={{ width: '169px', borderRadius: '5px' }} />
+                            <span key={index} style={{ width: '169px', display: 'flex', flexDirection: 'column', marginBottm: '2px' }}>
+                                <h6>
+                                    <span
+                                        style={{ fontStyle: 'normal', fontSize: "10px", color: "#ffffff", padding: '0px 5px', height: '32px', background: '#ff6051', borderRadius: '5px' }}>
+                                        主办</span>
+                                    <span style={{ fontStyle: 'normal' }}>{v.name.slice(0, 9)}</span>
+                                </h6>
+                                <h6>{v.name.slice(9, 20)}</h6>
+                                <h6>2020{v.show_time_top} </h6>
+                                <h6>
+                                    <span style={{ color: 'red' }}>¥ {v.min_price} </span>
+                                    <span>起</span>
+
+                                </h6>
+                                <h6>
+                                    <span style={{ fontSize: "10px", color: "red", padding: '0px 5px', height: '32px', background: '#fff1ef', borderRadius: '5px' }}>电子票</span>
+                                    <span style={{ fontSize: "10px", color: "red", padding: '0px 5px', height: '32px', background: '#fff1ef', borderRadius: '5px' }}>可选座</span>
+                                </h6>
+                                <h6 style={{ fontSize: "10px", width: '60px', color: "red", padding: '0px 5px', height: '16px', background: '#fff1ef', borderRadius: '5px' }}>限时8折起</h6>
+                            </span>
+
+                        </h6>
+
+
+
+
+
+
+                    ))
+                }
+
+
+            </div>
+            <div ref={(el) => (this.reRight = el)} style={{ width: '166px', height: '200px', float: 'left', marginRight: '8px' }}>
+                {
+
+                    this.state.waterfallRight.map((v, index) => (
+
+                        <h6 key={index}
+                            style={{
+                                width: '169px', height: '360px', marginBottom: '10px',
+                                border: '1px solid #e4e4e5', borderRadius: '5px',position:'relative'
+                            }}
+                            onClick={() => {
+                                this.props.history.push('/ticket/' + v.schedular_id)
+                            }}
+                        >
+                            <span style={{position:'absolute',right:'5px',top:'5px',color:'#ffffff',backgroundColor:'black',opacity:'0.8'}}>{v.city_name}</span>
+                            <img src={v.pic} alt="" style={{ width: '169px', borderRadius: '5px' }} />
+                            <span key={index} style={{ width: '169px', display: 'flex', flexDirection: 'column', marginBottm: '2px' }}>
+                                <h6>
+                                    <span
+                                        style={{ marginTop: '5px', fontStyle: 'normal', fontSize: "10px", color: "#ffffff", padding: '0px 5px', height: '32px', background: '#ff6051', borderRadius: '5px' }}>
+                                        主办</span>
+                                    <span style={{ fontStyle: 'normal' }}>{v.name.slice(0, 9)}</span>
+                                </h6>
+                                <h6>{v.name.slice(9, 20)}</h6>
+                                <h6>2020{v.show_time_top} </h6>
+                                <h6>
+                                    <span style={{ color: 'red' }}>¥ {v.min_price} </span>
+                                    <span>起</span>
+
+                                </h6>
+                                <h6>
+                                    <span style={{ fontSize: "10px", color: "red", padding: '0px 5px', height: '32px', background: '#fff1ef', borderRadius: '5px' }}>电子票</span>
+                                    <span style={{ fontSize: "10px", color: "red", padding: '0px 5px', height: '32px', background: '#fff1ef', borderRadius: '5px' }}>可选座</span>
+                                </h6>
+                                <h6 style={{ fontSize: "10px", width: '30px', color: "red", padding: '0px 5px', height: '16px', background: '#fff1ef', borderRadius: '5px' }}>套票</h6>
+                                <h6 style={{ fontSize: "10px", width: '60px', color: "red", padding: '0px 5px', height: '16px', background: '#fff1ef', borderRadius: '5px' }}>限时8折起</h6>
+                            </span>
+
+                        </h6>
+                    ))
+
+
+
+                }
+
+            </div>
+        </div>
+        {
+              
+                <div style={{widht:'200px',marginLeft:'150px',marginTop:'20px',color:'grey',marginBottom:'10px'}}>
+                    没有更多了
+                  </div>
+                  
+            
+        }     
+
+        </div> 
+       
+       const remen = 
+
+       <div style={{marginLeft:'30px',marginTop: '80px',}}>
+       <div>热门搜索</div> 
+       <div style={{width:'280px',display:'flex',flexWrap:'wrap'}} className={style.hot}>
+           
+           {
+              this.props.hotSearch.map((v,index)=>(
+              <span key={index} 
+              style={{paddingTop:'15px',paddingLeft:'10px',borderSizeing:'border-box',marginTop:'10px'}}
+              onClick={() => {
+                this.props.upSearchList.call(this,v.word)
+              
+            }}
+              >{v.word}</span>
+           ))
+           }
+           
+          
+       </div>  
+   </div>
+
+
+
+        return (
+            <div style={{display:'flex',flexDirection:'column'}}>
+
+                <div style={{ display: 'flex', height:'40px',width:'100%',marginBottom: '20px' ,position:'fixed',top:0,backgroundColor: '#ffffff'}}>
+                    <span className={style.ss}
+                        style={{ width: '300px', height: '30px', border: '1px solid #e4e4e5', borderRadius: '40px', backgroundColor: '#f5f5f5' }}>
                         <img src={require('../.././../assets/img/home/2.png')} style={{ width: '19px', height: '19px', marginLeft: '10px' }} alt="" />
-                        <input type={'text'} 
-                        style={{ color: 'grey', marginLeft:'10px',border:'none',outline:'medium',backgroundColor:'#f5f5f5'}}
-                        placeholder={'搜索热门演出'}
-                        ref={(e)=>{
-                            this.ele = e
-                        }}
-                        onInput={()=>{
-                            // 框里只要是有新增内容就有请求 不看光标的
-                            // console.log(this.ele.value)
-                            // console.log(this)
-                            // console.log(this.ele.value)
-                            if(this.ele.value.length !== 0){
-                                var reg = /^[\u4e00-\u9fa5]+$/;
-                                if (reg.test(this.ele.value)) {
-                                    // 这个正则是判断的用户输入的内容得是全中文时才发送请求
-                                    // 当你输英文时不给发送请求
-                                    // console.log(this.ele.value)
-                                    this.props.upSearchList.call(this,this.ele.value)      
+                        <input type={'text'}
+                            style={{ color: 'grey', marginLeft: '10px', border: 'none', outline: 'medium', backgroundColor: '#f5f5f5' }}
+                            placeholder={'搜索热门演出'}
+                            ref={(e) => {
+                                this.ele = e
+                            }}
+                            onInput={() => {
+
+                                this.setState({
+                                    show:1,
+                                })
+                                // 框里只要是有新增内容就有请求 不看光标的
+                                // console.log(this.ele.value)
+                                // console.log(this)
+                                // console.log(this.ele.value)
+                                if (this.ele.value.length !== 0) {
+                                    var reg = /^[\u4e00-\u9fa5]+$/;
+                                    if (reg.test(this.ele.value)) {
+                                        // 这个正则是判断的用户输入的内容得是全中文时才发送请求
+                                        // 当你输英文时不给发送请求
+                                        // console.log(this.ele.value)
+                                        this.props.upSearchList.call(this, this.ele.value)
+                                    }
+
+
+                                } else {
+                                    // console.log(123)
+                                    this.setState({
+                                        waterfallLeft: [],
+                                        waterfallRight: [],
+                                    })
                                 }
 
-                               
-                            }else{
-                                // console.log(123)
+
+                            }}
+                        />
+
+
+
+                        <img src={require('../.././../assets/img/home/x.png')}
+                            style={{ width: '19px', height: '19px', marginLeft: '60px', fontSize: '50px' }} alt="" onClick={() => {
+                                this.ele.value = null
                                 this.setState({
                                     waterfallLeft: [],
                                     waterfallRight: [],
                                 })
-                            }
-                            
 
-                        }}
-                        />
-                           
-                       
-
-                        <img src={require('../.././../assets/img/home/x.png')}
-                         style={{ width: '19px', height: '19px', marginLeft: '60px' ,fontSize:'50px'}} alt="" onClick={() => {
-                            this.ele.value = null
+                            }} />
+                    </span>
+                    <span style={{ color: 'grey', marginLeft: '10px', marginTop: '10px' }}
+                        onClick={() => {
+                            this.props.history.push('/')
                             this.setState({
                                 waterfallLeft: [],
                                 waterfallRight: [],
                             })
-
-                        }}/>
-                    </span>
-                    <span style={{ color: 'grey', marginLeft: '10px' ,marginTop:'10px'}}
-                    onClick={() => {
-                        this.props.history.push('/')
-                    }}>
+                        }}>
                         取消
                   </span>
                 </div>
@@ -82,106 +229,29 @@ import { connect } from 'react-redux'
 
 
                 {/* {瀑布流部分} */}
-                <div ref={(el) => (this.rewaterfall = el)} style={{marginLeft:'10px',marginTop:'10px'}}>
-                        <div ref={(el) => (this.reLeft = el)} style={{ width: '166px',float: 'left',marginRight:'10px' }} >
-                            {
-                               
-                               this.state.waterfallLeft.map((v, index) => (
-                                   
-                                    <h6 key={index} 
-                                    style={{ width: '169px', height:'340px',marginBottom:'5px',border:'1px solid #e4e4e5',borderRadius:'10px'}} 
-                                    onClick={() => {
-                                        this.props.history.push('/ticket/'+v.schedular_id)
-                                    }}
-                                    >
-                                        <img src={v.pic} alt="" style={{ width: '169px',  borderRadius:'5px'}} />
-                                        <span key={index} style={{width:'169px',display:'flex', flexDirection: 'column', marginBottm:'2px'}}>
-                                         <h6>
-                                            <span 
-                                            style={{fontStyle: 'normal',fontSize:"10px", color:"#ffffff" ,padding:'0px 5px',height:'32px',background:'#ff6051',borderRadius:'5px'}}>
-                                                主办</span>
-                                            <span style={{fontStyle: 'normal'}}>{v.name.slice(0,9)}</span>
-                                        </h6>
-                                        <h6>{v.name.slice(9,20)}</h6>
-                                        <h6>2020{v.show_time_top} </h6>
-                                        <h6>
-                                            <span style={{ color: 'red' }}>¥ {v.min_price} </span>
-                                            <span>起</span>
-
-                                        </h6>
-                                        <h6>
-                                            <span  style={{fontSize:"10px", color:"red" ,padding:'0px 5px',height:'32px',background:'#fff1ef',borderRadius:'5px'}}>电子票</span>
-                                            <span style={{fontSize:"10px", color:"red" ,padding:'0px 5px',height:'32px',background:'#fff1ef',borderRadius:'5px'}}>可选座</span>
-                                        </h6>
-                                        <h6 style={{fontSize:"10px", width:'60px' ,color:"red" ,padding:'0px 5px',height:'16px',background:'#fff1ef',borderRadius:'5px'}}>限时8折起</h6>
-                                    </span> 
-
-                                    </h6>
-
-
-
-
-
-
-                                ))
-                            }
-
-
-                        </div>
-                        <div ref={(el) => (this.reRight = el)} style={{ width: '166px',height:'200px',float: 'left',marginRight:'8px' }}>
-                            {
-                                
-                                this.state.waterfallRight.map((v, index) => (
-                                   
-                                    <h6 key={index} 
-                                    style={{ width: '169px', height:'360px',marginBottom:'10px',
-                                    border:'1px solid #e4e4e5',borderRadius:'5px'}}
-                                    onClick={() => {
-                                        this.props.history.push('/ticket/'+v.schedular_id)
-                                    }}
-                                    >
-                                    <img src={v.pic} alt="" style={{ width: '169px',  borderRadius:'5px'}} />
-                                    <span key={index} style={{width:'169px',display:'flex', flexDirection: 'column', marginBottm:'2px'}}>
-                                     <h6>
-                                        <span 
-                                        style={{marginTop:'5px',fontStyle: 'normal',fontSize:"10px", color:"#ffffff" ,padding:'0px 5px',height:'32px',background:'#ff6051',borderRadius:'5px'}}>
-                                            主办</span>
-                                        <span style={{fontStyle: 'normal'}}>{v.name.slice(0,9)}</span>
-                                    </h6>
-                                    <h6>{v.name.slice(9,20)}</h6>
-                                    <h6>2020{v.show_time_top} </h6>
-                                    <h6>
-                                        <span style={{ color: 'red' }}>¥ {v.min_price} </span>
-                                        <span>起</span>
-
-                                    </h6>
-                                    <h6>
-                                        <span  style={{fontSize:"10px", color:"red" ,padding:'0px 5px',height:'32px',background:'#fff1ef',borderRadius:'5px'}}>电子票</span>
-                                        <span style={{fontSize:"10px", color:"red" ,padding:'0px 5px',height:'32px',background:'#fff1ef',borderRadius:'5px'}}>可选座</span>
-                                    </h6>
-                                    <h6 style={{fontSize:"10px", width:'30px' ,color:"red" ,padding:'0px 5px',height:'16px',background:'#fff1ef',borderRadius:'5px'}}>套票</h6>
-                                    <h6 style={{fontSize:"10px", width:'60px' ,color:"red" ,padding:'0px 5px',height:'16px',background:'#fff1ef',borderRadius:'5px'}}>限时8折起</h6>
-                                </span> 
-
-                                </h6>
-                                ))
-
-
-
-                            }
-
-                        </div>
-                    </div>
 
                 {/* {瀑布流部分} */}
-                <div>
-                    没有更多了
-                </div>
+
+                {/* {热门搜索} */}
+              
+                   
+                  
+                {/* {热门搜索} */}
+
+
+                {
+                    this.state.waterfallLeft.length>0? pubu: remen
+                         
+                   
+                }
+             
+               
+
             </div>
         )
     }
-    componentDidMount(){
-           // 有滚动条监听事件 
+    componentDidMount() {
+        // 有滚动条监听事件 
         window.onscroll = () => {
             let maxScrollHeight =
                 document.documentElement.scrollTop || document.body.scrollTop; //浏览器卷去的高度 body 实际高度
@@ -210,41 +280,54 @@ import { connect } from 'react-redux'
                     //   这个开关的设置是 就是只有是true的时候是 才可以是再次请求数据 然后设置是在actionCreater的调取完数据
                     //   此时把值改变成true 即该次的数据请求完了才可以请求下页的数据 即是之前老师讲过的就是比如此时有短的出现了
                     // 若此时数据还没回来的话 此时会不断请求 所以就死让它这次的数据请求完才可以请求下一页的数据
-                  
+
                     if (this.switch) {
-                    //    这里只能在这里改变页数 不能在store 因为这个引发请求的事件会一直有进行的 不能说变一个搜索词就改变这个页数
-                       this.setState({
-                           pageNo:this.state.pageNo+1
-                       })
+                        //    这里只能在这里改变页数 不能在store 因为这个引发请求的事件会一直有进行的 不能说变一个搜索词就改变这个页数
+                        this.setState({
+                            pageNo: this.state.pageNo + 1
+                        })
                         // console.log(  this.state.pageNo)
                         this.switch = false; //满足条件时 先关闭开关  获取数据异步程序
-                       
-                        this.props.upSearchList.call(this,this.ele.value)
 
-                        
+                        this.props.upSearchList.call(this, this.ele.value)
+
+
                     }
                 }
             }
         }
 
     }
+
+
+    componentDidMount(){
+      
+        this.props.upHotSearchList()
+       
+    }
 }
 
 
 function mapStateToProps(state) {
-    
+
     return {
-        searchList:state.searchList.searchList,
-       
+        searchList: state.searchList.searchList,
+        hotSearch:state.hotSearch.hotSearchList    
     }
 }
 function mapDispatchToProps(dispatch) {
     return {
         upSearchList(val) {
-         
-            dispatch(searchActionCreator.upSearchList.call(this,val))
+
+            dispatch(searchActionCreator.upSearchList.call(this, val))
         },
-       
+
+        upHotSearchList() {
+
+            dispatch(searchActionCreator.upHotSearchList())
+        },
+
+
 
     }
 }
