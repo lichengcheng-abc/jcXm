@@ -33,7 +33,7 @@ class Home extends Component {
 
         const homeRender = (
 
-            <div style={{position:'relative'}}>
+            <div>
                 <div className={style.homePage}>
                     <div className={style.dw}>
                         <img style={{ width: '19px', height: '19px' }} src={require('../assets/img/home/1.png')} alt="" />
@@ -42,8 +42,6 @@ class Home extends Component {
 
                     <div className={style.search} onClick={() => {
                         this.props.history.push('/search/index')
-
-                        document.documentElement.scrollTop = document.body.scrollTop =0;
                     }} style={{border:'1px solid #e4e4e5', borderRadius: '40px'}}>
                         <img src={require('../assets/img/home/2.png')} style={{ width: '19px', height: '19px', marginLeft: '10px' }} alt="" />
                         <span style={{ color: 'grey', marginLeft: '10px' }} >搜索热门演出</span>
@@ -73,7 +71,6 @@ class Home extends Component {
                                     <div className="swiper-slide" key={index} onClick={() => {
                                         // console.log( item.url.slice(19) )
                                         this.props.history.push(item.url.slice(19))
-                                        document.documentElement.scrollTop = document.body.scrollTop =0;
                                     }}>
                                         <img src={item.image_url} style={{ width: '345px', height: '139px' }} alt="" />
                                     </div>
@@ -97,7 +94,6 @@ class Home extends Component {
                             <div key={item.id} className={style.classifyDiv} onClick={() => {
                                 // console.log( item.url.slice(19) )
                                 this.props.history.push(item.url.slice(19))
-                                document.documentElement.scrollTop = document.body.scrollTop =0;
                             }}>
                                 <img src={item.pic} alt="" />
                                 <span>{item.name}</span>
@@ -146,7 +142,6 @@ class Home extends Component {
                     <div className={style.getVips} onClick={() => {
 
                         this.props.history.push('/vip/index/1')
-                        document.documentElement.scrollTop = document.body.scrollTop =0;
                     }}>
                         <div className={style.getVips1}>
                             <img src={require('../assets/img/home/hy1.png')} alt="" style={{ width: '19px', height: '19px' }}
@@ -169,7 +164,6 @@ class Home extends Component {
                                             <div className="swiper-slide" key={index} onClick={() => {
 
                                                 this.props.history.push('/ticket/' + item.schedular_id)
-                                                document.documentElement.scrollTop = document.body.scrollTop =0;
                                             }}>
                                                 <div className={style.getVipx}>
                                                     <dt style={{ float: 'left', width: '55px', height: '75px' }}>
@@ -210,7 +204,6 @@ class Home extends Component {
                 {/* {充9999部分} */}
                 <div onClick={() => {
                     this.props.history.push('/plus/index')
-                    document.documentElement.scrollTop = document.body.scrollTop =0;
                 }}>
                     <img src={require('../assets/img/home/999.png')} alt=""
                         style={{ width: '345px', height: '100px', marginTop: '20px', marginLeft: '20px' }} />
@@ -229,9 +222,6 @@ class Home extends Component {
                         <span style={{ fontSize: '18px', fontWeight: 'bold' }}>热门演出</span>
                         <span style={{ fontSize: '15px' }} onClick={() => {
                             this.props.history.push('/show/showsLibrary')
-                            document.documentElement.scrollTop = document.body.scrollTop =0;
-
-                           
                         }}
                         >全部 ></span>
                     </div>
@@ -245,7 +235,6 @@ class Home extends Component {
                                         onClick={() => {
 
                                             this.props.history.push(v.schedular_url.slice(19))
-                                            document.documentElement.scrollTop = document.body.scrollTop =0;
                                         }}
                                     >
 
@@ -277,14 +266,11 @@ class Home extends Component {
                         <span style={{ fontSize: '18px', fontWeight: 'bold' }}>巡回演出</span>
                         <span style={{ fontSize: '15px' }} onClick={() => {
                             this.props.history.push('/touring')
-
-                            document.documentElement.scrollTop = document.body.scrollTop =0;
                         }}
                         >全部 ></span>
                     </div>
                     <div className={style.tourx} onClick={() => {
                         this.props.history.push('/tour/tourShowInfo?sid=2')
-                        document.documentElement.scrollTop = document.body.scrollTop =0;
                     }}>
                         <dt style={{ float: 'left', marginLeft: '15px' }}>
                             <img src="https://image.juooo.com/group1/M00/04/3E/rAoKNV59rlWAUODrAABlWN_fCvM347.jpg"
@@ -315,20 +301,15 @@ class Home extends Component {
                         <span style={{ fontSize: '18px', fontWeight: 'bold' }}>舞台剧</span>
                         <span style={{ fontSize: '15px' }} onClick={() => {
                             this.props.history.push('/show/showsLibrary?cid=0&caid=37')
-                            document.documentElement.scrollTop = document.body.scrollTop =0;
                         }}
                         > ></span>
                     </div>
                     <div className={style.wtx} onClick={() => {
                         this.props.history.push('/ticket/112293')
-                        document.documentElement.scrollTop = document.body.scrollTop =0;
                     }}>
-                        <dt style={{ float: 'left', marginLeft: '15px',position:'relative' }}>
+                        <dt style={{ float: 'left', marginLeft: '15px' }}>
                             <img src={require('../assets/img/home/wt.png')}
                                 style={{ width: '100px', height: '136px' }} alt="" />
-                            <img src={require('../assets/img/home/jczb.png')}  
-                            style={{ width: '28px', height: '34px' ,position:'absolute',left:'5px',top:'0px'}}
-                            alt="" />
                         </dt>
                         <dd style={{ float: 'left', marginLeft: '20px' }}>
                             <h5 style={{ lineHeight: '30px', color: '#fefefe' }}>2020.07.13 周五 20:00</h5>
@@ -343,24 +324,19 @@ class Home extends Component {
                     <div className={style.wtx2} style={{ marginLeft: '25px', marginTop: '25px' }}
                     >
 
-                        <div style={{ overflowX: 'auto', height: '356px', display: 'flex', }}>
+                        <div style={{ overflowX: 'auto', height: '356px', display: 'flex' }}>
 
                             {
                                 this.props.wtList.map((v, index) => (
                                     <span key={index}
-                                        style={{ width: '100px', height: '200px', marginRight: '10px', position:'relative'}}
+                                        style={{ width: '100px', height: '200px', marginRight: '10px', }}
                                         onClick={() => {
                                             this.props.history.push(v.url.slice(19))
-                                            document.documentElement.scrollTop = document.body.scrollTop =0;
                                         }}
                                     >
 
                                         <img src={v.pic}
                                             style={{ width: '100px', height: '136px', borderRadius: '5px', display: 'inline-block' }} alt="" />
-                                          <img src={require('../assets/img/home/jczb.png')}  
-                                          style={{ width: '28px', height: '34px' ,position:'absolute',left:'5px',top:'0px'}}
-                                          alt="" />
-                                        
                                         <h6 style={{ fontStyle: 'normal' }}> {v.schedular_name.slice(0, 9)}</h6>
                                         <h6 style={{ width: '100px', whiteSpace: 'wrap', overflow: 'hidden', textOverflow: 'ellipsis', fontStyle: 'normal' }}>
                                             {v.schedular_name.slice(9, 20)}</h6>
@@ -395,14 +371,11 @@ class Home extends Component {
                                this.state.waterfallLeft.map((v, index) => (
                                    
                                     <h6 key={index} 
-                                    style={{ width: '169px', height:'340px',marginBottom:'5px',border:'1px solid #e4e4e5',borderRadius:'10px',position:'relative'}} 
+                                    style={{ width: '169px', height:'340px',marginBottom:'5px',border:'1px solid #e4e4e5',borderRadius:'10px'}} 
                                     onClick={() => {
                                         this.props.history.push('/ticket/'+v.schedular_id)
-                                        document.documentElement.scrollTop = document.body.scrollTop =0;
                                     }}
                                     >
-
-                        <span style={{position:'absolute',right:'5px',top:'5px',color:'#ffffff',backgroundColor:'black',opacity:'0.8'}}>{v.city_name}</span>
                                         <img src={v.pic} alt="" style={{ width: '169px',  borderRadius:'5px'}} />
                                         <span key={index} style={{width:'169px',display:'flex', flexDirection: 'column', marginBottm:'2px'}}>
                                          <h6>
@@ -443,15 +416,11 @@ class Home extends Component {
                                 this.state.waterfallRight.map((v, index) => (
                                    
                                     <h6 key={index} 
-                                    style={{ width: '169px', height:'360px',marginBottom:'10px',border:'1px solid #e4e4e5',borderRadius:'5px',position:'relative'}}
+                                    style={{ width: '169px', height:'360px',marginBottom:'10px',border:'1px solid #e4e4e5',borderRadius:'5px'}}
                                     onClick={() => {
                                         this.props.history.push('/ticket/'+v.schedular_id)
-                                        document.documentElement.scrollTop = document.body.scrollTop =0;
                                     }}
                                     >
-                                        <span style={{position:'absolute',right:'5px',top:'5px',color:'#ffffff',backgroundColor:'black',opacity:'0.8'}}>{v.city_name}</span>
-
-
                                     <img src={v.pic} alt="" style={{ width: '169px',  borderRadius:'5px'}} />
                                     <span key={index} style={{width:'169px',display:'flex', flexDirection: 'column', marginBottm:'2px'}}>
                                      <h6>
@@ -496,15 +465,9 @@ class Home extends Component {
 
 
 
-            {/* {送90天图标定位} */}
-            <img src={require('../assets/img/home/s90.png')} style={{ width: '62px', height: '62px' ,position:'fixed',right:'5px',bottom:'80px'}}
-             onClick={() => {
-                this.props.history.push('/vip/index/1')
-                document.documentElement.scrollTop = document.body.scrollTop =0;
-            }}
-            alt=""/>
 
-             
+
+
 
             </div>
 

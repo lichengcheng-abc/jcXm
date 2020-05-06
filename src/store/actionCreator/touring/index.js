@@ -10,13 +10,12 @@ export function upTouring(payload){
 }
 export default {
     getTouring(){
-        console.log(this)
         return async (dispatch)=>{
             console.log(this)
             const {data} = await axios.get('/show/tour/getList')
-            // if(data.list.length>0){
-            //     this.state.isLoading = false
-            // }
+            if(data){
+                this.state.isLoading = false
+            }
             dispatch(upTouring(data.list))
         }
     }

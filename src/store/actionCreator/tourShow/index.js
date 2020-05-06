@@ -11,12 +11,15 @@ export function upTourShow(payload){
 }
 export default {
     getTourShowList(){
-        return async function(dispatch){
+        return async (dispatch)=>{
             const {data} = await axios.get('/show/tour/getInfo',{
                 params:{
                     id:2
                 }
             })
+            if(data){
+                this.state.isLoading = false
+            }
             // console.log(111,data)
             dispatch(upTourShow(data))
         }

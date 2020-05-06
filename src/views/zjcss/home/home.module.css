@@ -139,7 +139,7 @@
 
      white-space: nowrap;
     text-overflow: ellipsis; 
-    overflow-y: hidden; 
+    overflow: hidden; 
   
 
     height:356px;

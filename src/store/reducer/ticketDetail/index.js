@@ -9,6 +9,10 @@ export default function(state=ticketInit,{type,payload}){
         state.time = payload.static_data.show_time_data;
         state.show_desc = payload.static_data.show_desc;
         state.cate_id = payload.static_data.cate_parent_id;
+        state.tips = payload.static_data.tips;
+    }
+    if(type === 'UP_RECOMM'){
+        state.recommList = payload
     }
     // console.log(state,777)
     return state
