@@ -1,8 +1,32 @@
-import React, { Component } from 'react'
+import React from 'react'
+import filters from '../../../filters'
+import {
+    NavLink,
+    withRouter
+}from "react-router-dom";
+import {
+    LeftOutlined,
+    EllipsisOutlined,
+    EnvironmentOutlined 
+} from '@ant-design/icons';
+import {Drawer} from 'antd';
+import axios from 'axios';
+import style from "../../zjcss/showList/showTypeList.module.css"
 
-export default class ShowList extends Component {
-    render() {
-        return (
+class Show extends React.Component{
+    constructor(props){
+        super(props);
+        this.state={
+            visible:false,
+            list:[],
+            city_list:[],
+            page:1,
+            support_desc:[]
+        }
+    }
+    
+    render(){
+        return(
             <div>
                 <div className={style.show_library}>
                     {/* 头部 */}
@@ -15,7 +39,7 @@ export default class ShowList extends Component {
                     <div className={style.show_type_wrap}>
                         <div className={style.show_type}>
                             <ul className={style.show_type_ul}>
-                                <li id='1' onClick={this.setcategory.bind(this,0)}>
+                                <li onClick={this.setcategory.bind(this,0)}>
                                     <NavLink to={"/show/showsLibrary"}>全部</NavLink>
                                 </li>
                                 <li onClick={this.setcategory.bind(this,35)}>
@@ -112,7 +136,7 @@ export default class ShowList extends Component {
         )
     }
     async componentDidMount(){
-        // console.log("1111111111111")
+        console.log("1111111111111")
         const {data} = await axios.get("/city/city/getCityList?version=6.1.1&referer=2")
             this.setState({
                 city_list:data.city_list
@@ -126,19 +150,20 @@ export default class ShowList extends Component {
     }
     async setcategory(category = 0){
         let page = this.state.page
-        // console.log("222222222")
+        console.log("222222222")
         const{data} = await axios.get ("/Show/Search/getShowList?city_id=0&category="+category+"&page="+page+"&referer_type=&version=6.1.1&referer=2",{
             params:{
                 page:this.state.page,
             }
 
         })
+        // console.log(data.list)
         // 一旦状态发生改变, render会执行
       this.setState({
           page:data.page,
           list:data.list,
       })
-        // console.log(data)
+        console.log(data)
     }
     async Loadmore(category = 0){
         this.setState({
@@ -161,7 +186,7 @@ export default class ShowList extends Component {
         this.setState({
             visible:true,
         });
-        // console.log(33333333)
+        console.log(33333333)
     };
 
     onClose=()=>{
@@ -170,3 +195,5 @@ export default class ShowList extends Component {
         });
     }
 }
+
+export default withRouter(Show)
