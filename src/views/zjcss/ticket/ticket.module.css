@@ -128,12 +128,16 @@
 }
 .show .comment{
     height: 772px;
-    border: 1px solid skyblue;
+    /* border: 1px solid skyblue; */
 }
 .show span{
     height: 48px;
 }
-.show .content p{
+.content img{
+    width: 690px;
+    height: 518px;
+}
+/* .show .content p{
     height: 296px;
     font-size: 26px;
     color: #232323;
@@ -145,7 +149,7 @@
     height: 516px;
     margin-bottom: 48px;
     border: 1px solid red;
-}
+} */
 #recomm{
     padding: 0 30px;
 }
@@ -160,16 +164,16 @@
     height: 288px;
     display: flex;
     justify-content: space-between;
+    margin-top: 50px;
 }
 #recomm img{
     width: 210px;
     height: 288px;
-    border: 1px solid pink;
 }
-#recomm section{
+#recomm .diff{
     width: 450px;
     height: 288px;
-    background: salmon;
+    /* background: salmon; */
 }
 .big p:nth-child(2){
     color: #232323;

@@ -16,7 +16,7 @@ import Loading from '../components/common/Loading'
 class Home extends Component {
     constructor() {
         super()
-        this.pageIndex = 1;
+      
         this.rewaterfall = null;
         this.reLeft = null; //瀑布流左边元素
         this.reRight = null; //瀑布流右边元素
