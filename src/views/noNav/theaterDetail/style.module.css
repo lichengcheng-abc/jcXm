@@ -2,14 +2,12 @@
     background: url(../../../assets/img/theater/theater_detail_bg.png);
     height: 386px;
     width: 100%;
-    display: flex;
-    flex-direction: column;
 }
 .header_back{
     width: 100%;
     height: 88px;
 }
-.goback{
+.back{
     display: block;
     width: 96px;
     height: 80px;
@@ -89,12 +87,8 @@
     height: 58px;
 }
 .section{
-    padding-top: 396px;
     width: 100%;
     height: 100%;
-    background-color: #fff;
-    display: flex;
-    flex-direction: column;
 }
 .section_title{
     width: 724px;
@@ -109,7 +103,6 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    
     
 }
 .con_content{

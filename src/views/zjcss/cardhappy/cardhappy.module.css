@@ -89,31 +89,31 @@
     height: 288px;
     border: 1px solid pink;
 }
-#change .productor{
+#change section{
     width: 450px;
     height: 288px;
     /* background: salmon; */
     position: relative;
 }
-.productor p:nth-of-type(1){
+section p:nth-of-type(1){
     height: 32px;
     margin-top: 8px;
     margin-bottom: 8px;
     color: #232323;
     font-size: 32px;
 }
-.productor p:nth-of-type(2){
+section p:nth-of-type(2){
     height: 92px;;
     color: #232323;
     font-size: 32px;
     margin: 18px 0;
 }
-.productor p:nth-of-type(3){
+section p:nth-of-type(3){
     height: 28px;
     color: #666;
     font-size: 24px;
 }
-.productor p:nth-of-type(4){
+section p:nth-of-type(4){
     color: red;
     position: absolute;
     left: 0;

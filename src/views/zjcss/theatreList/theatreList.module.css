@@ -22,8 +22,6 @@
     width: 100%;
     padding-top: 116px;
     background-color:#fefefe;
-    display: flex;
-    flex-direction: column;
 
 }
 .stylistic{
@@ -83,7 +81,6 @@
 .show{
     width: 592px;
     height: 384px;
-    overflow-x: auto;
     /* background-color: yellow; */
     margin-top: 30px;
     display: flex;
@@ -91,23 +88,11 @@
 .showAction{
     width: 228px;
     /* background-color: yellowgreen; */
-
+    
     height: 100%;
     
 }
-.look_more{
-    margin-top: 30px;
-    float: left;
-    margin-left: 22px;
-    width: 180px;
-    height: 290px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #666666;
-    background-color: #f5f5f5;
-    font-size: 28px;
-}
+
 .show_date{
     width: 100%;
     height: 58px;

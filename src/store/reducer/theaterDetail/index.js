@@ -12,7 +12,7 @@ export default function(state=theaterDtailInit,{type,playload,payload}){
             if(payload){
                 state.result = payload
             }
-            console.log(state)
+            // console.log(state)
                 
         }
    

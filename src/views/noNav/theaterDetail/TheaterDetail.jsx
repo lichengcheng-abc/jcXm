@@ -2,24 +2,16 @@ import React, { Component } from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import style from './style.module.css'
-import Loading from '../../../components/common/Loading'
 import detailCreator from '../../../store/actionCreator/theaterDetail'
 class TheaterDetail extends Component {
-    constructor() {
-        super();
-        this.state = {
-            isLoading:true
-        };
-
-    }
     render() {
         const {list} = this.props
         const {result} = this.props
-        const thDetail = (
+        return (   
             <div>
                 <header className={style.header}>
                     <div className={style.header_back}>
-                        <i className={style.goback}
+                        <i className={style.back}
                             onClick={()=>{
                                 this.props.history.go(-1)
                             }}
@@ -46,7 +38,7 @@ class TheaterDetail extends Component {
                     </div>
                     
                 </header>
-                <section className={style.section}>
+                <section>
                 <div className={style.section_title}>
                                 热门演出
                             </div>
@@ -86,13 +78,6 @@ class TheaterDetail extends Component {
                     }
                     <p className={style.end_more}>没有更多了</p>
                 </section>
-            </div>
-            )
-        return (   
-            <div>
-                {
-                    this.state.isLoading ? <Loading/> : thDetail
-                }
             </div>
         )
     }
