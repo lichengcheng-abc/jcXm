@@ -67,6 +67,8 @@ class TheatreList extends Component {
         )
     }
     async componentDidMount(){
+        // 让开始的高度为0
+        document.documentElement.scrollTop = document.body.scrollTop =0;
         this.props.getTheatreList.call(this)
     }
 }

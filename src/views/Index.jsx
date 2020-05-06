@@ -42,10 +42,15 @@ export default class Index extends Component {
                             (this.props.location.pathname=== '/'?
                             <img src={require('../assets/img/home/ft1.png')} style={{ width: '42px', height: '42px' }} alt="" />
                             :
+                           
                             <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                             <img src={require('../assets/img/home/ft5.png')} style={{ width: '30px', height: '30px', }} alt="" />
                             <span style={{ color: 'black', marginLeft: '3px', fontWeight: 'bold' }}>首页</span>
                             </div>
+
+                            
+                                
+                            
                             )
                         }
                        

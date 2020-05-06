@@ -1,32 +1,8 @@
-import React from 'react'
-import filters from '../../../filters'
-import {
-    NavLink,
-    withRouter
-}from "react-router-dom";
-import {
-    LeftOutlined,
-    EllipsisOutlined,
-    EnvironmentOutlined 
-} from '@ant-design/icons';
-import {Drawer} from 'antd';
-import axios from 'axios';
-import style from "../../zjcss/showList/showTypeList.module.css"
+import React, { Component } from 'react'
 
-class Show extends React.Component{
-    constructor(props){
-        super(props);
-        this.state={
-            visible:false,
-            list:[],
-            city_list:[],
-            page:1,
-            support_desc:[]
-        }
-    }
-    
-    render(){
-        return(
+export default class ShowList extends Component {
+    render() {
+        return (
             <div>
                 <div className={style.show_library}>
                     {/* 头部 */}
@@ -194,5 +170,3 @@ class Show extends React.Component{
         });
     }
 }
-
-export default withRouter(Show)

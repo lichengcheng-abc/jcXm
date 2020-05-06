@@ -11,7 +11,7 @@ import cardhappy from '../reducer/cardhappy';
 // 程程的reducer
 import {slide_listReducer,classify_listReducer,vipIndexReducer,hotsRecommendListReducer,wtListReducer,showListReducer} 
 from './home/index'
-import {searchListReducer}  from './search/index'
+import {searchListReducer,hotSearchReducer}  from './search/index'
 // 彩霞的
 import theatreList from './theatreList'
 import theaterDetail from './theaterDetail'
@@ -27,7 +27,7 @@ const rootReducer = combineReducers({
     wt:wtListReducer,
     showList:showListReducer,
     searchList:searchListReducer,
-
+    hotSearch:hotSearchReducer,
 
 
     // 彩霞的

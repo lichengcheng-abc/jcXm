@@ -74,6 +74,10 @@ import help from '../assets/img/myjuooo/Myjuooo_help.png'
             </div>
       )
     }
+    componentDidMount(){
+         // 让开始的高度为0
+        document.documentElement.scrollTop = document.body.scrollTop =0;
+    }
 }
 
 export default withRouter(Myjuooo)
