@@ -14,6 +14,9 @@ export default{
                     page:1
                 }
             })
+            if(data){
+                this.state.isLoading = false
+            }
             // console.log(data.theatre_list)
             dispatch(changeTheatreList(data.theatre_list))
         }

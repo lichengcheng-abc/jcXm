@@ -35,6 +35,9 @@ export default {
                     venue_id:list_id,
                 }
             })
+            if(data){
+                this.state.isLoading = false
+            }
             // console.log(data.list,111111)
             dispatch(getListDetail(data.list))
         }
