@@ -11,9 +11,15 @@ class CardproductIndex extends Component {
         this.state = {
             currentIndex: 0,
             isloading:true,
-            btn:['购买新卡','绑定新卡','我的卡包']
+            btn:['购买新卡','绑定新卡','我的卡包'],
+            cardSelected:false,
         };
     }
+    cardHandleMask=()=>{
+        this.setState({
+            cardSelected: !this.state.cardSelected
+        })
+        }
     sestCurrentStyle = (index) => {
         return this.state.currentIndex === index ? 'current' : ''
     }
@@ -42,9 +48,29 @@ class CardproductIndex extends Component {
                 }}
                 >&lt;</i>
                 <h3 className={style.header_h3}>购买新卡</h3>
-                <img className={style.index_more} src={more} alt=""/>
+                <img className={style.index_more} src={more} alt=""
+                onClick={()=>{
+                    this.cardHandleMask()
+                }}
+                />
             </header>
             <section className={style.section}>
+            <div 
+                    className={this.state.cardSelected ? style.select : style.disSelect }
+                    >
+                        <span
+                        onClick={()=>{
+                            this.props.history.push('/myjuooo/myjuooo')
+                            // console.log(78787)
+                        }}
+                        >我的聚橙</span>
+                        <span
+                        onClick={()=>{
+                            this.props.history.push('/')
+                            // console.log(11111)
+                        }}
+                        >主页</span>
+                    </div>
                     {
                         banner.map(v=>(
                         <div key={v.name} className={style.banner}
@@ -73,7 +99,7 @@ class CardproductIndex extends Component {
                                     >
                                         <img className={style.item_icon} src="http://img4.imgtn.bdimg.com/it/u=1987360574,1067821184&fm=26&gp=0.jpg" alt=""/>
                                                         
-                                        <spanp className={style.item_p}>{v.benefits_name}</spanp>
+                                        <span className={style.item_p}>{v.benefits_name}</span>
                                     </div>                                                   
                                 ))
                                             
@@ -142,6 +168,12 @@ class CardproductIndex extends Component {
                                 )) 
                         }
                     </div>
+                    <div 
+                        onClick={()=>{
+                            this.cardHandleMask()
+                        }}
+                        className={this.state.cardSelected ? style.mask : style.dismask } 
+                    ></div>
 
             </section>
 
