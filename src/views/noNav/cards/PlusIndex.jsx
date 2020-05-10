@@ -10,10 +10,15 @@ class PlusIndex extends Component {
     constructor() {
         super();
         this.state = {
-            isLoading:true
+            isLoading:true,
+            plusSelected:false,
         };
     }
-    
+    plusHandleMask=()=>{
+        this.setState({
+           plusSelected: !this.state.plusSelected
+        })
+        }
     render() {
         const {list} = this.props
         const {header} = this.props
@@ -26,9 +31,29 @@ class PlusIndex extends Component {
                     }}
                     >&lt;</i>
                     <h3 className={style.header_h3}>{header.name}</h3>
-                    <img className={style.more} src={more} alt=""/>
+                    <img className={style.more} src={more} alt=""
+                    onClick={()=>{
+                        this.plusHandleMask()
+                    }}
+                    />
                 </header>
                 <section className={style.section}>
+                <div 
+                    className={this.state.plusSelected ? style.select : style.disSelect }
+                    >
+                        <span
+                        onClick={()=>{
+                            this.props.history.push('/myjuooo/myjuooo')
+                            // console.log(78787)
+                        }}
+                        >我的聚橙</span>
+                        <span
+                        onClick={()=>{
+                            this.props.history.push('/')
+                            // console.log(11111)
+                        }}
+                        >主页</span>
+                    </div>
                     <div className={style.banner}>
                         <div className={style.banner_center}>
                             <a href="#">活动规则</a>
@@ -67,6 +92,12 @@ class PlusIndex extends Component {
                         </div>
                                 
                     </div>
+                    <div 
+                        onClick={()=>{
+                            this.plusHandleMask()
+                        }}
+                        className={this.state.plusSelected ? style.mask : style.dismask } 
+                    ></div>
                 </section>
                 <footer className={style.footer}>
                     <div className={style.content}>

@@ -8,15 +8,45 @@ import more from '../../../assets/img/theater/more.2ce7873.png'
 import banner from '../../../assets/img/cart/rAoKmV3ggTyAXnFrAAHF-ZAZv74104.png'
 import one from '../../../assets/img/cart/vip_plus_double_points.3e1951f.png'
 import ReactDom from 'react-dom'
+
 class VipIndex extends Component {
     constructor() {
         super();
         this.state = {
-
+            dateSelected:false,
             isLoading:true,
-            
+            legal:false
         };
     }
+    handleMask=()=>{
+        
+        this.setState({
+           dateSelected: !this.state.dateSelected
+        })
+    }
+    handleLegal=()=>{
+        var legal = document.getElementById('sp')
+        this.setState({
+            legal: !this.state.legal
+         })
+         if(this.state.legal){
+            ReactDom.findDOMNode(legal).style.height = '409px'
+            // console.log(document.getElementById('sp'))
+            
+        }else{
+            ReactDom.findDOMNode(legal).style.height = '0'
+        }
+    }
+        handleClick = (e) => {
+            const nodeName = e.target.nodeName.toUpperCase()
+            let tag = e.target;
+            if (nodeName === 'LI') {
+                let index = parseInt(tag.getAttribute('index'))
+                this.setState({
+                    currentIndex: index
+                })
+            }
+        }
     render() {
         const {list} = this.props
         const {goods} = this.props
@@ -29,9 +59,30 @@ class VipIndex extends Component {
                     }}
                     >&lt;</i>
                     <h3 className={style.header_h3}>vip + 会员</h3>
-                    <img className={style.more} src={more} alt=""/>
+                    <img className={style.more} src={more} alt="" 
+                    onClick={()=>{
+                        this.handleMask()
+                    }}
+                    />
+                    
                 </header>
                 <section className={style.section}>
+                <div 
+                    className={this.state.dateSelected ? style.select : style.disSelect }
+                    >
+                        <span
+                        onClick={()=>{
+                            this.props.history.push('/myjuooo/myjuooo')
+                            // console.log(78787)
+                        }}
+                        >我的聚橙</span>
+                        <span
+                        onClick={()=>{
+                            this.props.history.push('/')
+                            // console.log(11111)
+                        }}
+                        >主页</span>
+                    </div>
                     <div className={style.vip_plus}>
                         <div className={style.vip_title}></div>
                         <div className={style.list_content}>
@@ -48,7 +99,11 @@ class VipIndex extends Component {
                                 }
                            </div>   
                            <input type={'button'} className={style.btn_end} value={'立即开通￥99/年'}/>
-                            <span className={style.vip_a}>权益解读</span>
+                            <span className={style.vip_a}
+                            onClick={()=>{
+                                this.handleLegal()
+                            }}
+                            >权益解读</span>
                         </div>
                         
                             <img className={style.banner_img} src={banner} alt=""/>
@@ -88,8 +143,43 @@ class VipIndex extends Component {
                         
                     </div>
                     <div className={style.mo}> 更多VIP+尊享权益，敬请期待</div>
+                    <div 
+                        onClick={()=>{
+                            this.handleMask()
+                        }}
+                        className={this.state.dateSelected ? style.mask : style.dismask } 
+                    ></div>
                 </section>
                 <footer id={'abc'} className={style.footer}>立即开通￥99/年</footer>
+                <div id={'sp'} className={style.legal}>
+                    <div className={style.tit}>
+                        <span>权益解读</span>
+                        <strong
+                        onClick={()=>{
+                            this.handleLegal()
+                        }}
+                        ></strong>
+                        
+                    </div>
+                    <h3 className={style.title_h3}>VIP+会员权益解读</h3>
+                    <h4 className={style.tit_h4}>会员权益</h4>
+                    <p className={style.tit_p}>优先购票、专属票价、专享折扣、专享券、全场包邮、双倍积分、赠观演券、明星活动、免费期刊、生日专享</p>
+                    <h4 className={style.tit_h4}>权益详解</h4>
+                    <p className={style.tit_p}>（注：VIP+会员，以下简称V+会员）</p>
+                    <h4 className={style.tit_h4}>优先购票</h4>
+                    <p className={style.tit_p}>优先购票，既优先购，是聚橙会员专属的一种提前购买权益。为回馈V+会员，聚橙会不定期筛选重点演出项目支持V+会员优先购买，即会员可在演出对外公售前优先购票支付。（部分演出项目有购买张数的限制）</p>
+                    <h4 className={style.tit_h4}>优先购票</h4>
+                    <p className={style.tit_p}>优先购票，既优先购，是聚橙会员专属的一种提前购买权益。为回馈V+会员，聚橙会不定期筛选重点演出项目支持V+会员优先购买，即会员可在演出对外公售前优先购票支付。（部分演出项目有购买张数的限制）</p>
+                    <h4 className={style.tit_h4}>会员权益</h4>
+                    <p className={style.tit_p}>优先购票、专属票价、专享折扣、专享券、全场包邮、双倍积分、赠观演券、明星活动、免费期刊、生日专享</p>
+                    <h4 className={style.tit_h4}>权益详解</h4>
+                    <p className={style.tit_p}>（注：VIP+会员，以下简称V+会员）</p>
+                    <h4 className={style.tit_h4}>优先购票</h4>
+                    <p className={style.tit_p}>优先购票，既优先购，是聚橙会员专属的一种提前购买权益。为回馈V+会员，聚橙会不定期筛选重点演出项目支持V+会员优先购买，即会员可在演出对外公售前优先购票支付。（部分演出项目有购买张数的限制）</p>
+                    <h4 className={style.tit_h4}>优先购票</h4>
+                    <p className={style.tit_p}>优先购票，既优先购，是聚橙会员专属的一种提前购买权益。为回馈V+会员，聚橙会不定期筛选重点演出项目支持V+会员优先购买，即会员可在演出对外公售前优先购票支付。（部分演出项目有购买张数的限制）</p>
+
+                </div>
             </div>
         )
         return (
@@ -104,12 +194,7 @@ class VipIndex extends Component {
     componentDidMount(){
         this.props.getVipListIndex.call(this)
         this.props.getVipGoodsIndex.call(this)
-        // console.log(this.props)
-
-            console.log(687678)
-            window.addEventListener('scroll',this.handleScroll)
-        
-        
+        window.addEventListener('scroll',this.handleScroll)
     }
     
     handleScroll=(event)=>{
@@ -118,20 +203,18 @@ class VipIndex extends Component {
             // console.log(scrollTop)
             if(ReactDom.findDOMNode(abc)){
                 // console.log(66666666)
-                if(scrollTop>400){
+                if(scrollTop<400){
                     ReactDom.findDOMNode(abc).style.height = 0
                 }else{
                     ReactDom.findDOMNode(abc).style.height = '49px'
                 }
-            }else{
-                // console.log(98989)
             }
         
         
     }
 }
 function mapStateProps(state){
-    console.log(state)
+    // console.log(state)
     return {
         list:state.vipIndex.vipList,
         goods:state.vipIndex.goods
