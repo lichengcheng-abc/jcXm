@@ -144,7 +144,6 @@ class Show extends React.Component{
         this.setcategory()
     }
     back(){
-        console.log("点击了返回按钮")
         this.props.history.go(-1)
     }
     async setcategory(category = 0){
