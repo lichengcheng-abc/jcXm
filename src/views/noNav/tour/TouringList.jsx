@@ -9,7 +9,7 @@ class TouringList extends Component {
     constructor(props){
         super(props);
         this.state = {
-            isLoading:false
+            isLoading:true
         }
     }
     render() {
@@ -41,7 +41,7 @@ class TouringList extends Component {
                                                         {item.name}
                                                         <span className={style.dot}></span>
                                                     </div>
-                                                <span className={style.time}>{(this.$filters.date(item.start_time)).slice(5,10)} </span>
+                                                    <span className={style.time}>{(this.$filters.date(item.start_time)).slice(5,10)} </span>
                                                 </div>
                                         ))
                                     }
@@ -60,7 +60,7 @@ class TouringList extends Component {
         )
     }
     componentDidMount(){
-        this.props.getTouring()
+        this.props.getTouring.call(this)
     }
 }
 function mapStateToProps({touring}){

@@ -4,31 +4,24 @@ import {connect} from 'react-redux'
 import style from '../navCss/plus.module.css'
 import Loading from '../../../components/common/Loading'
 import plusCreator from '../../../store/actionCreator/plus'
-import more from '../../../assets/img/theater/more.2ce7873.png'
 import last from '../../../assets/img/cart/save.e6e7f69.png'
+import HeaderCard from '../../../components/card/HeaderCard'
 class PlusIndex extends Component {
     constructor() {
         super();
         this.state = {
-            isLoading:true
+            isLoading:true,
         };
     }
-    
+   
     render() {
         const {list} = this.props
         const {header} = this.props
         const plusCard = (
             <div>
-                <header>
-                    <i className={style.back}
-                    onClick={()=>{
-                        this.props.history.go(-1)
-                    }}
-                    >&lt;</i>
-                    <h3 className={style.header_h3}>{header.name}</h3>
-                    <img className={style.more} src={more} alt=""/>
-                </header>
+                <HeaderCard>橙PLUS卡</HeaderCard>
                 <section className={style.section}>
+  
                     <div className={style.banner}>
                         <div className={style.banner_center}>
                             <a href="#">活动规则</a>
@@ -67,6 +60,7 @@ class PlusIndex extends Component {
                         </div>
                                 
                     </div>
+
                 </section>
                 <footer className={style.footer}>
                     <div className={style.content}>

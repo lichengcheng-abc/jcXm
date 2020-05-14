@@ -35,3 +35,4 @@ export function searchListReducer (state=searchStateInit,{type,payload,pageNo}) 
   return state
   
 }
+

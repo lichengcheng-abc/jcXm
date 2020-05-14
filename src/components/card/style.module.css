@@ -1,0 +1,131 @@
+.header{
+    background-color: #fff;
+    height: 88px;
+    position: fixed;
+    top: 0;
+    width: 750px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 99;
+    
+}
+.mask{
+    background: rgba(0,0,0,0.4) !important;
+    z-index: 10;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    /* background-color: red; */
+  }
+.select{
+    width: 280px;
+    height: 168px;
+    background-color: #fff;
+    z-index: 100;
+    position: fixed;
+    right: 0;
+    top: 88px;
+    border: 1px solid #f2f2f2;
+    border-bottom: none;
+}
+.disSelect{
+    display: none;
+}
+.dismask{
+    display: none;
+}
+.select>span{
+    display: block;
+    width: 100%;
+    height: 83px;
+    border-bottom: 1px solid #f1f1f1;
+    text-align: center;
+    line-height: 83px;
+    color: #212121;
+    font-size: 28px;
+}
+.back{
+    margin-left: 30px;
+    width: 66px;
+    height: 66px;
+    display: block;
+    text-align: center;
+    line-height: 66px;
+    font-size: 66px;
+    color: #777;
+}
+.header_h3{
+    color: #232323;
+    font-size: 36px;
+    margin-top: 30px;
+}
+.more{
+    margin-right: 30px;
+    width: 36px;
+    height: 36px;
+    margin-top: 16px;
+}
+.legal{
+    width: 100%;
+    height: 0;
+    background-color: #fff;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 120;  
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+.tit{
+    width: 100%;
+    height: 138px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    justify-content: space-between;
+
+}
+.tit>span{
+    color: #232323;
+    font-size: 32px;
+    font-weight: bold;
+}
+.title_h3{
+    width: 100%;
+    text-align: center;
+    color: #000;
+    
+    font-size: 32px;
+}
+.tit>strong{
+    width: 68px;
+    height: 68px;
+    display: block;
+    background: url('../../assets/img/cart/a.jpg') center center;
+    background-repeat: no-repeat;
+    margin-right: 40px;
+}
+.tit_h4{
+    width: 100%;
+    /* background-color: red; */
+    margin: 0 auto;
+    font-size: 28px;
+    padding-left: 30px;
+    
+}
+.tit_p{
+    display: block;
+    /* height: 90px; */
+    width: 690px;
+    margin: 30px auto;
+    padding-left: 30px;
+    /* padding-right: 30px; */
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 200;
+}

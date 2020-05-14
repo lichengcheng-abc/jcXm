@@ -7,6 +7,7 @@ import ticketDetail from '../reducer/ticketDetail';
 import tourShow from '../reducer/tourShow';
 import touring from '../reducer/touring';
 import cardhappy from '../reducer/cardhappy';
+import group from '../reducer/group';
 
 // 程程的reducer
 import {slide_listReducer,classify_listReducer,vipIndexReducer,hotsRecommendListReducer,wtListReducer,showListReducer} 
@@ -30,6 +31,10 @@ const rootReducer = combineReducers({
     showList:showListReducer,
     searchList:searchListReducer,
     hotSearch:hotSearchReducer,
+
+
+
+    // 彩霞的
    
     // 彩霞的  
     theatreList,
@@ -38,12 +43,12 @@ const rootReducer = combineReducers({
     plusIndex,
     vipIndex,
 
-
     // 崔的
     ticketDetail,
     tourShow,
     touring,
     cardhappy,
+    group,
 })
 
 

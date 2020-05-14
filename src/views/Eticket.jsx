@@ -24,8 +24,4 @@ export default class Eticket extends Component {
             </div>
         )
     }
-    componentDidMount(){
-        // 让开始的高度为0
-        document.documentElement.scrollTop = document.body.scrollTop =0;
-    }
 }

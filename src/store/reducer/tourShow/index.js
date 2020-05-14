@@ -2,7 +2,7 @@ import tourShowInit from '../../state/tourShow';
 export default function(state=tourShowInit,{type,payload}){
     state = JSON.parse(JSON.stringify(state));
     if(type === 'UP_TOUR_SHOW'){
-        console.log(44444444,payload);
+        // console.log(44444444,payload);
         state.name = payload.name;
         state.city_num = payload.city_num;
         state.show_num = payload.show_num;
