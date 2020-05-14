@@ -17,7 +17,6 @@ class VipIndex extends Component {
             legal:false
         };
     }
-
     handleLegal=()=>{
         var legal = document.getElementById('sp')
         this.setState({
@@ -49,6 +48,22 @@ class VipIndex extends Component {
                 
                 <HeaderCard>VIP + 会员</HeaderCard>
                 <section className={style.section}>
+                <div 
+                    className={this.state.dateSelected ? style.select : style.disSelect }
+                    >
+                        <span
+                        onClick={()=>{
+                            this.props.history.push('/myjuooo/myjuooo')
+                            // console.log(78787)
+                        }}
+                        >我的聚橙</span>
+                        <span
+                        onClick={()=>{
+                            this.props.history.push('/')
+                            // console.log(11111)
+                        }}
+                        >主页</span>
+                    </div>
                     <div className={style.vip_plus}>
                         <div className={style.vip_title}></div>
                         <div className={style.list_content}>
@@ -115,6 +130,12 @@ class VipIndex extends Component {
                         
                     </div>
                     <div className={style.mo}> 更多VIP+尊享权益，敬请期待</div>
+                    <div 
+                        onClick={()=>{
+                            this.handleMask()
+                        }}
+                        className={this.state.dateSelected ? style.mask : style.dismask } 
+                    ></div>
                 </section>
                 <footer id={'abc'} className={style.footer}>立即开通￥99/年</footer>
                 <div id={'sp'} className={style.legal}>

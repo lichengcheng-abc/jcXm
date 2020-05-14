@@ -60,7 +60,6 @@ class PlusIndex extends Component {
                         </div>
                                 
                     </div>
-
                 </section>
                 <footer className={style.footer}>
                     <div className={style.content}>
