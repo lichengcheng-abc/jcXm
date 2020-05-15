@@ -19,9 +19,41 @@ export function getSearchList(payload,pageNo) {
   }
 }
 
-
+// let arr =[]
  export default {
     upSearchList(val){
+
+      this.setState({
+        historySearch:true
+     })
+      
+      // localStorage.search = []
+      // localStorage.search = JSON.stringify([])
+      if(this.state.historyArr.length <3){
+        // console.log(111)
+        // arr.push('111')
+        // console.log(arr)
+        // console.log( JSON.parse(localStorage.search) )
+        // //  localStorage.search.push(val)
+        // JSON.parse(localStorage.search).push('lala')
+        // console.log(JSON.parse(localStorage.search))
+        // localStorage.search = JSON.stringify(JSON.parse(localStorage.search))
+        
+        // arr.push(val)
+        this.state.historyArr.push(val)
+        // console.log(this.state.historyArr)
+
+        localStorage.search = JSON.stringify(this.state.historyArr)
+
+        this.setState({
+          historyArr: this.state.historyArr
+       })
+        
+
+
+      }
+     
+
       
         return async  (dispatch)=> {
             // console.log(val)

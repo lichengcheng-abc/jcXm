@@ -1,15 +1,18 @@
 import React, { Component } from 'react'
 
 import style from './zjcss/eticket/eticket.module.css'
+import HeaderCard from '../components/card/HeaderCard'
 export default class Eticket extends Component {
     render() {
         return (
             <div>
-                <div className={style.header}>
-                    <span style={{ marginLeft: '160px', fontSize: '18px' }}>票夹</span>
+                {/* <div className={style.header}>
+                    <span style={{ marginLeft : '160px', fontSize: '18px' }}>票夹</span>
                     <span style={{ marginLeft: '140px', fontSize: '30px', marginTop: '5px' }}>...</span>
-                </div>
-                <div style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
+                </div> */}
+                 
+                <HeaderCard>票夹</HeaderCard>
+                <div style={{display:'flex',flexDirection:'column',alignItems:'center',borderTop:'4px solid #f2f2f2 '}}>
                     <img src={require('../assets/img/eticket/1.png')} style={{ width: '109px', hetght: '77px' ,marginTop:'150px'}} alt="" />
                     <span style={{color:'#c9c9c9',marginTop:'20px'}}>暂无电子票</span>
                     <span 

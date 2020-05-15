@@ -18,6 +18,10 @@ class Search extends Component {
 
           
             show:null,
+
+            historySearch:false,
+            historyArr:[],
+            // historyArr:localStorage.search,
            
 
         }
@@ -134,10 +138,90 @@ class Search extends Component {
 
         </div> 
        
-       const remen = 
+//        const remen = 
 
-       <div style={{marginLeft:'30px',marginTop: '80px',}}>
-       <div>热门搜索</div> 
+//        <div style={{marginLeft:'30px',marginTop: '80px',}}>
+//        <div>热门搜索</div> 
+//        <div style={{width:'280px',display:'flex',flexWrap:'wrap'}} className={style.hot}>
+           
+//            {
+//               this.props.hotSearch.map((v,index)=>(
+//               <span key={index} 
+//               style={{paddingTop:'15px',paddingLeft:'10px',borderSizeing:'border-box',marginTop:'10px'}}
+//               onClick={() => {
+//                 this.props.upSearchList.call(this,v.word)
+              
+//             }}
+//               >{v.word}</span>
+//            ))
+//            }
+           
+          
+//        </div>  
+//    </div>
+
+const historySearch =(
+    <div>
+         <div>
+    <span>历史搜索</span>  
+    <img src={require('../../../assets/img/home/clear.e4a5ee4.png')} 
+    style={{width:'20px',height:'20px',marginLeft:'250px'}} 
+    onClick={()=>{
+        this.setState({
+           historySearch:false
+        })
+        this.state.historyArr=[]
+        localStorage.search = JSON.stringify(this.state.historyArr)
+    }} alt=""/>
+</div> 
+<div style={{width:'280px',display:'flex',flexWrap:'wrap'}} className={style.hot}>
+  {
+      this.state.historyArr.length>0?
+      (
+        
+             JSON.parse(localStorage.search).map((v,index)=>(
+     <span key={index} 
+     style={{paddingTop:'15px',paddingLeft:'10px',borderSizeing:'border-box',marginTop:'10px'}}
+     onClick={() => {
+       this.props.upSearchList.call(this,v)
+      
+     
+   }}
+     >{v}</span>
+  ))
+  
+      
+      )
+      :''
+  }
+ 
+
+  
+ 
+</div>
+    </div>
+
+     )
+
+                const remen = 
+
+       <div style={{marginLeft:'30px',marginTop: '50px',}}>
+
+      {
+
+          this.state.historySearch?
+          
+
+          historySearch
+         
+        
+            :''
+      }
+          
+
+
+
+       <div style={{marginTop:'50px'}}>热门搜索</div> 
        <div style={{width:'280px',display:'flex',flexWrap:'wrap'}} className={style.hot}>
            
            {
@@ -155,6 +239,7 @@ class Search extends Component {
           
        </div>  
    </div>
+
 
 
 
