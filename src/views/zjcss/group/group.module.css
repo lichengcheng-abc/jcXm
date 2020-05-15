@@ -36,19 +36,29 @@
 .big img{
     width: 210px;
     height: 288px;
+    position: relative;
 }
 .big li{
+    width: 210px;
+    height: 288px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #232323;
+    opacity: 0.7;
+}
+.big i{
     width: 140px;
     height: 140px;
     border: 1px solid white;
     border-radius: 50%;
     position: absolute;
-    left:15%;
-    top: 30%;
+    left:50%;
+    top: 25%;
     transform: translateX(-50%);
-    background-color: #232323;
-    opacity: 0.8;
     color: white;
+    text-align: center;
+    line-height: 140px;
 }
 .big .diff{
     width: 450px;

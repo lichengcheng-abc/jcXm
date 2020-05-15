@@ -9,7 +9,8 @@ class TicketDetail extends Component {
     constructor(props){
         super(props);
         this.state = {
-            isLoading:true
+            isLoading:true,
+            isTap:false
         }
     }
     render() {
@@ -25,7 +26,7 @@ class TicketDetail extends Component {
             <div className={style.header}>
                 <span onClick={()=>{this.props.history.push('/')}} >{"<"} </span>
                 <span>演出详情</span>
-                <i></i>
+                <i></i>  
             </div>
             <div className={style.pro}>
                 <p><img src={static_data.pic}/></p>
@@ -61,6 +62,10 @@ class TicketDetail extends Component {
                 <div className={style.content}>
                     <p dangerouslySetInnerHTML={{__html: show_desc.desc}}></p>
                 </div>
+                {/* <p onClick={()=>{this.state.isTap === true ? "btn" : ""}} className={style.showAll}>展示全部</p> */}
+                {/* <p className={this.state.isTap === true ? '{btn}' : '{showAll}'} onClick= {
+                    ()=>this.setState({isTap:true}),console.log(3)
+                } >展示全部</p> */}
             </div>
         </div>
 
