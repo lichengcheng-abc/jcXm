@@ -1,19 +1,22 @@
 import React, { Component } from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
+import Swiper from 'swiper/js/swiper.js'
+import 'swiper/css/swiper.min.css'
 import style from '../navCss/CardproductIndex.module.css'
-import more from '../../../assets/img/theater/more.2ce7873.png'
 import cartCreator from '../../../store/actionCreator/CardproductIndex'
 import Loading from '../../../components/common/Loading'
+import HeaderCard from '../../../components/card/HeaderCard'
 class CardproductIndex extends Component {
     constructor() {
         super();
         this.state = {
             currentIndex: 0,
             isloading:true,
-            btn:['购买新卡','绑定新卡','我的卡包']
+            btn:['购买新卡','绑定新卡','我的卡包'],
         };
     }
+
     sestCurrentStyle = (index) => {
         return this.state.currentIndex === index ? 'current' : ''
     }
@@ -35,27 +38,25 @@ class CardproductIndex extends Component {
         const {storeCard} = this.props
         const CardIndex = (
             <div>
-                <header className={style.hea}>
-                <i className={style.index_back}
-                onClick={()=>{
-                    this.props.history.go(-1)
-                }}
-                >&lt;</i>
-                <h3 className={style.header_h3}>购买新卡</h3>
-                <img className={style.index_more} src={more} alt=""/>
-            </header>
+                
+            <HeaderCard>购买新卡</HeaderCard>
             <section className={style.section}>
-                    {
-                        banner.map(v=>(
-                        <div key={v.name} className={style.banner}
-                        onClick={()=>{
-                            this.props.history.push('/vip/index') 
-                        }}
-                        >
-                            <img className={style.ban_vip} src={v.mb_image} alt=""/>
-                        </div> 
-                        ))
-                    } 
+                    <div className="swiper-container" id={style.banner}>
+                        <div className="swiper-wrapper" id={style.swiperWrap}>
+                            {
+                                banner.map((v,index)=>(
+                                    <div className="swiper-slide" key={index} id={style.ban_vip}>
+                                        <img id={style.ban_vip} src={v.mb_image} alt=""/>
+                                    </div>
+                                ))
+                            }
+                                
+                        </div>
+                        <div className='swiper-pagination'></div>
+                    </div>
+
+                    
+                        
                     <div className={style.vipRoule}>
                         <span className={style.vip_p}><span className={style.vip_h2}>VIP+<em className={style.vip_em}>开通vip,演出随心看</em></span><i className={style.vip_back}
                         
@@ -73,7 +74,7 @@ class CardproductIndex extends Component {
                                     >
                                         <img className={style.item_icon} src="http://img4.imgtn.bdimg.com/it/u=1987360574,1067821184&fm=26&gp=0.jpg" alt=""/>
                                                         
-                                        <spanp className={style.item_p}>{v.benefits_name}</spanp>
+                                        <span className={style.item_p}>{v.benefits_name}</span>
                                     </div>                                                   
                                 ))
                                             
@@ -142,6 +143,7 @@ class CardproductIndex extends Component {
                                 )) 
                         }
                     </div>
+                   
 
             </section>
 
@@ -171,7 +173,18 @@ class CardproductIndex extends Component {
         this.props.getCartList.call(this)
         this.props.getVipRuleList.call(this)
         this.props.getHotBannerList.call(this)
-        
+    }
+    componentDidUpdate(){
+        new Swiper('.swiper-container', {
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false
+            },
+            pagination: {
+                el: '.swiper-pagination',
+            }
+        });
     }
 }
 function mapStateToprops({CardproductIndex}){

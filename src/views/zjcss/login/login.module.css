@@ -44,8 +44,30 @@
     display: flex;
     align-items: center;
     font-size: 32px;
-    border-bottom: 2px solid #999999;
+    /* border-bottom: 2px solid #999999; */
+    outline: none;
 }
+
+.back_eye_img{
+    width:40px;
+    height:40px;
+    position: absolute;
+    top:480px;
+    right:72px;
+    background:url("../../../assets/img/login/eye.png") no-repeat;
+    display:block;
+}
+
+.back_eye_img_open{
+    width:40px;
+    height:40px;
+    position: absolute;
+    top:480px;
+    right:72px;
+    background:url("../../../assets/img/login/eyeopen.png") no-repeat;
+    display:block;
+}
+
 
 .formStyle .submit{
     border:none;
@@ -66,6 +88,13 @@
     letter-spacing: 8px;
 }
 
+.the_i{
+    background:url(../../../assets//img/login/snow.jpg);
+    font-size:30px;
+    letter-spacing: 1px;
+    color:#666;
+}
+
 .others{
     font-size: 30px;
     color:#666666;
@@ -77,21 +106,22 @@
     display: inline-block;
     position: absolute;
     left:50%;
+    transform: translateX(-50%);
     bottom:188px;
-    margin-left: -100px;
-    width: 200px;
+    width: 470px;
     height: 50px;
     line-height:50px;
     color: #999999;
     text-align: center;
-    background-color: #fefefe;
+    background-color: rgba(254, 254, 254, 1)
 }
 
-.hrline{
-    width:80px;
-    vertical-align:middle; 
-    display:inline-block;
+.line{
+    display: inline-block;
+    width:100px;
+    border: 1px solid #999;
 }
+
 .othersLogin_p{
     display: block;
     margin-block-start: 75px;

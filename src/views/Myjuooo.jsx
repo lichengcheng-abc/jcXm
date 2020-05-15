@@ -29,9 +29,11 @@ import help from '../assets/img/myjuooo/Myjuooo_help.png'
                     <div className={style.myjuooo_me}>
                         {/* 头像及信息部分 */}
                         <div className={style.myjuooo_metop}>
+                            <NavLink  to={"/passport/login"} style={{color:'#111'}}>
                             <div className={style.myjuooo_mypic}></div>
-                            <span className={style.myjuooo_myname}>橙子</span>
-                            <span className={style.myjuooo_myid}>ID:123</span>
+                            <span className={style.myjuooo_myname}>登录/注册</span>
+                            <span className={style.myjuooo_myid} style={{color:'#999'}}>请点击登录 ></span>
+                            </NavLink>
                         </div>
                         {/* 会员 */}
                         <span className={style.myjuooo_myvip}>普通会员</span>

@@ -6,10 +6,9 @@ import {
 import iconOfLogin from '../../../assets/img/login/iconOfJuooo.png'
 import qq from '../../../assets/img/login/qq.png'
 import weibo from '../../../assets/img/login/weibo.png'
-import eye from '../../../assets/img/login/eye.png'
-import eyeopen from '../../../assets/img/login/eyeopen.png'
+import snow from '../../../assets/img/login/snow.jpg'
 import {
-    LeftOutlined
+    LeftOutlined, FileExcelFilled
 } from '@ant-design/icons';
 import axios from 'axios';
 import style from '../../zjcss/login/login.module.css'
@@ -32,18 +31,26 @@ import style from '../../zjcss/login/login.module.css'
                         </div>
                         {/* 表单部分 */}
                         <form action="###" className={style.formStyle}>
-                            <input type="text" name="userName" placeholder="请输入手机号/邮箱" style={{margin:'0',borderBottom:'1px solid #999999'}}/>
-                            <input type="password" name="passWord" placeholder="请输入密码" id="passWord" style={{borderBottom:'1px solid #999999'}}/>
-                            <i className={style.back_eye_img} style={{backgroundSize:'cover'}} onClick={this.showhide.bind(this)} id="back_img"></i>
-                            {/* <img src={eye} alt="fail" style={{width:'20px',position:'absolute',top:'240px',right:'36px'}} onClick={this.showhide.bind(this)}/>
-                            <img src={eyeopen} alt="fail" style={{width:'20px',position:'absolute',top:'240px',right:'36px',display:'none'}}/> */}
-                            <button type="button" name="submit" value="登录" className={style.submit}>登录</button>
+                            {/* 输入手机号部分 */}
+                            <div style={{display:'flex',alignItems:'center',borderBottom:'1px solid #999999',justifyContent:'center'}}>
+                                <span style={{color:'#FF6743',fontSize:'16px',paddingRight:'8px',fontFamily:'"Avenir", Helvetica, Arial, sans-serif'}}>+86</span>
+                                <input type="text" name="userName" placeholder="请输入手机号" style={{margin:'0'}}/>
+                            </div>
+                            {/* 输入验证码部分 */}
+                            <div style={{borderBottom:'1px solid #999999'}}>
+                                <input type="text" name="passWord" placeholder="请输入数字验证码"/>
+                                {/* 这里显示随机生成的 4 位验证码 */}
+                                <i id="the_i" className={style.the_i} style={{height:'30px',textAlign:'center',lineHeight:'30px',display:'inline-block',width:'70px',position:'absolute',right:'32px',top:'235px',backgroundSize:'cover'}} onClick={this.changeNum.bind(this)}>345612</i>
+                            </div>
+                            {/* 提示未注册手机号注册会员 */}
+                            <p style={{paddingTop:'15px',color:'#999999',fontSize:'12px'}}>未注册的手机号将自动创建会员账号</p>
+                            <button type="button" name="submit" value="登录" className={style.submit} style={{letterSpacing:'0'}}>获取短信验证码</button>
                         </form>
                         {/* forget password */}
                         <div className={style.others}>
-                            <span style={{float:'left'}}>忘记密码</span>
-                            <NavLink exact to={'/passport/codelogin'}>
-                            <span style={{float:'right',color:'#666666'}}>验证码登录/注册</span>
+                            <span style={{float:'left'}}>邮箱注册</span>
+                            <NavLink to={'/passport/login'}>
+                            <span style={{float:'right',color:'#666666'}}>密码登录</span>
                             </NavLink>
                         </div>
                     </div>
@@ -69,20 +76,15 @@ import style from '../../zjcss/login/login.module.css'
         )
     }
 
-    showhide(){
-        let passWordInp = document.getElementById('passWord')
-        let back_img = document.getElementById('back_img')
-        if(passWordInp.type == 'password'){
-            passWordInp.type = "text"
-            back_img.className = 'login_back_eye_img_open__2Dh8y'
-        }else{
-            passWordInp.type = 'password'
-            back_img.className = 'login_back_eye_img__5I71z'
-        }
-    }
 
     back(){
         this.props.history.go(-1)
+    }
+
+    changeNum(){
+        let the_i = document.getElementById('the_i')
+        var res = Math.floor(Math.random() * 900000) + 100000
+        the_i.innerText = res
     }
 }
 

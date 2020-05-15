@@ -18,6 +18,7 @@ import TouringList from '../views/noNav/tour/TouringList'
 import TourShowinfo from '../views/noNav/tour/TourShowInfo'
 import VipIndex from '../views/noNav/cards/VipIndex'
 
+import CodePassport from '../views/noNav/login/CodePassport'
 
 import Error from '../views/Error'
 
@@ -37,6 +38,10 @@ export default [
     {
         path: '/passport/login',
         component: Passport,
+    },
+    {
+        path: '/passport/codelogin',
+        component: CodePassport,
     },
     {
         path: '/plus/index',

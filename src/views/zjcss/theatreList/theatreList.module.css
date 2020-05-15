@@ -1,4 +1,6 @@
-
+::-webkit-scrollbar{
+    display:none;
+}
 .header{
     background-color: #fff;
     color: #232323;
