@@ -21,7 +21,7 @@ class ActivityGroup extends Component {
                     {   
                         groupList.map(v=>(
                             <div onClick={()=>{this.props.history.push('/ticket/'+v.schedular_id)}} key={v.id} className={style.big}>
-                                <p><img src={v.show_pic} /> <li>活动结束</li> </p>
+                                <p><img src={v.show_pic} /> <li><i>活动结束</i></li> </p>
                                 <div className={style.diff}>
                                     <p>{this.$filters.date(v.end_time)} </p>
                                     <p>{v.show_name} </p>
