@@ -22,7 +22,7 @@ export default class Index extends Component{
                     borderTop:'1px solid #ccc'
                 }} >
                     <NavLink style={{color:'red'}} to={'/activity/group'}>拼团</NavLink>
-                    <NavLink to={'/mygroup'}>我的团</NavLink>
+                    <NavLink to={'/passport/login'}>我的团</NavLink>
                 </nav>
             </div>
         )
