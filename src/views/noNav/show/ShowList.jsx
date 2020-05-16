@@ -11,7 +11,7 @@ import {
 } from '@ant-design/icons';
 import Axios from "axios";
 
-class index extends Component{
+class showList extends Component{
     constructor(props){
         super(props);
         this.category = 0 //演出类型
@@ -237,4 +237,4 @@ function  mapDispatchToProps (dispatch){
 
     }
 };
-export default connect(mapStateToProps, mapDispatchToProps)(index);
+export default connect(mapStateToProps, mapDispatchToProps)(showList);
