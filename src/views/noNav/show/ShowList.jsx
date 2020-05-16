@@ -9,7 +9,6 @@ import {
     LeftOutlined,
     EllipsisOutlined,
 } from '@ant-design/icons';
-import Axios from "axios";
 
 class showList extends Component{
     constructor(props){
@@ -38,15 +37,15 @@ class showList extends Component{
         });
     }
 
-    async getMapIdToData({cityId, currentCity, abbreviation}){
-        const cityReset = JSON.parse(localStorage.getItem("CITY_INFO"));
-        cityReset.cityId = cityId;
-        cityReset.cityName = currentCity;
-        cityReset.abbreviation = abbreviation;
-        await localStorage.setItem("CITY_INFO", JSON.stringify(cityReset));
-        await this.props.defaultPageIndex.call(this); // 重置为第一页
-        await this.props.getShowListWaterPall.call(this); //获取数据
-    }
+    // async getMapIdToData({cityId, currentCity, abbreviation}){
+    //     const cityReset = JSON.parse(localStorage.getItem("CITY_INFO"));
+    //     cityReset.cityId = cityId;
+    //     cityReset.cityName = currentCity;
+    //     cityReset.abbreviation = abbreviation;
+    //     await localStorage.setItem("CITY_INFO", JSON.stringify(cityReset));
+    //     await this.props.defaultPageIndex.call(this); // 重置为第一页
+    //     await this.props.getShowListWaterPall.call(this); //获取数据
+    // }
 
     render(){
         return(
@@ -62,12 +61,12 @@ class showList extends Component{
                             </section>
                             {/* 导航 */}
                             <div className={style.library_nav}>
-                                <Drawer
+                                {/* <Drawer
                                     {...this.state}
                                     showFn = {this.showFn.bind(this)}
                                     drawerData = {this.props.libraryMap}
                                     getMapIdToData = {this.getMapIdToData.bind(this)}
-                                ></Drawer>
+                                ></Drawer> */}
                                 <div className = {style.nav}>
                                     <ul>
                                         <li
@@ -119,7 +118,7 @@ class showList extends Component{
                                 >
                                     <div style={{width:'75px'}}>
                                         <span>
-                                            {JSON.parse(localStorage.getItem("CITY_INFO")).cityName}
+                                            {/* {JSON.parse(localStorage.getItem("CITY_INFO")).cityName} */}全国
                                         </span>
                                         <span className = {style.map_icon}>
                                             <img src={require("../../../assets/img/show/libraryMap.png")} alt=""/>

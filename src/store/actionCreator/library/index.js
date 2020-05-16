@@ -43,7 +43,7 @@ export default {
       const {data} = await axios.get(
         "/Show/Index/getShowCategoryList?version=6.1.1&referer=2"
       );
-        // console.log(11111111,data);
+        console.log(11111111,data);
       dispatch(thelibrary_nav(data));
     };
   },
@@ -54,6 +54,7 @@ export default {
       const  {data}  = await axios.get(
         "/city/city/getCityList?version=6.1.1&referer=2"
       );
+      console.log(2222,data)
       dispatch(thelibrary_map(data.city_list));
     };
   },
@@ -73,11 +74,12 @@ export default {
     // console.log(this.category);
     return async (dispatch) => {
       const data = await axios.get(
-        `/Show/Search/getShowList?city_id=${
-          JSON.parse(localStorage.getItem("CITY_INFO")).cityId
-        }&category=${this.category}&keywords=&venue_id=&start_time=&page=${
-          this.props.pageIndex
-        }&referer_type=index&version=6.1.1&referer=2`
+        // `/Show/Search/getShowList?city_id=${
+        //   JSON.parse(localStorage.getItem("CITY_INFO")).cityId
+        // }&category=${this.category}&keywords=&venue_id=&start_time=&page=${
+        //   this.props.pageIndex
+        // }&referer_type=index&version=6.1.1&referer=2`
+        "/Show/Search/getShowList?city_id=0&category=${this.category}&page=${this.props.pageIndex}&referer_type=&version=6.1.1&referer=2"
       );
       
       console.log(33333,data);
