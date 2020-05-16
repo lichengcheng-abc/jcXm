@@ -58,9 +58,9 @@ import style from '../../zjcss/login/login.module.css'
                     <div className={style.othersLogin}>
                         <p className={style.othersLogin_p}>
                             <span className={style.othersLogin_span}>
-                                <span className={style.line}></span>
-                                    <i style={{margin:'0 8px',verticalAlign:'-4px',fontStyle:'normal'}}>其他登录方式</i>
-                                <span className={style.line}></span>
+                                <span className={style.line} style={{borderTop:'1.5px solid #bbb'}}></span>
+                                    <i style={{margin:'0 14px',verticalAlign:'-4px',fontStyle:'normal'}}>其他登录方式</i>
+                                <span className={style.line} style={{borderTop:'1.5px solid #bbb'}}></span>
                             </span>
                         </p>
                         {/* qq/weibo */}

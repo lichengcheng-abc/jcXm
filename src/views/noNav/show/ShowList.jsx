@@ -1,197 +1,240 @@
-import React from 'react'
-import {
-    NavLink,
-    withRouter
-}from "react-router-dom";
+import React, {Component} from "react";
+import { connect } from "react-redux";
+import style from "../../zjcss/showList/showTypeList.module.css"
+import Drawer from "../../../components/common/Drawer";
+import Loading from "../../../components/common/Loading";
+import WaterfallEle from "../../../components/common/WaterfallEle";
+import libraryAction from "../../../store/actionCreator/library";
 import {
     LeftOutlined,
     EllipsisOutlined,
-    EnvironmentOutlined 
 } from '@ant-design/icons';
-import {Drawer} from 'antd';
-import axios from 'axios';
-import style from "../../zjcss/showList/showTypeList.module.css"
+import Axios from "axios";
 
-class Show extends React.Component{
+class index extends Component{
     constructor(props){
         super(props);
-        this.state={
-            visible:false,
-            list:[],
-            city_list:[],
-            page:1,
-            support_desc:[]
-        }
+        this.category = 0 //演出类型
+        this.city = 0; // 演出城市
+        this.pageIndex = 1;
+        this.switch = false; // 防止瀑布流滑动数据加载过快
+        this.reLeft = null; // 左边瀑布流盒子
+        this.reRight = null; // 右边瀑布流盒子
+        this.navActive = 0;
+        this.currentCity = "全国";
+        this.state = {
+            libraryLeft:[],
+            libraryRight:[],
+            mask:"none",
+            right:"-561px",
+            isClick:true
+        };
     }
-    
+
+    showFn(){
+        this.setState({
+            mask:"none",
+            right:"-561px",
+        });
+    }
+
+    async getMapIdToData({cityId, currentCity, abbreviation}){
+        const cityReset = JSON.parse(localStorage.getItem("CITY_INFO"));
+        cityReset.cityId = cityId;
+        cityReset.cityName = currentCity;
+        cityReset.abbreviation = abbreviation;
+        await localStorage.setItem("CITY_INFO", JSON.stringify(cityReset));
+        await this.props.defaultPageIndex.call(this); // 重置为第一页
+        await this.props.getShowListWaterPall.call(this); //获取数据
+    }
+
     render(){
         return(
-            <div>
-                <div className={style.show_library}>
-                    {/* 头部 */}
-                    <section className={style.library_title} >
-                        <i className="icons-list" onClick={this.back.bind(this)} style={{height:'18px'}}><LeftOutlined/></i>
-                        <h5 className={style.title_text}>演出</h5>
-                        <i className="icons-list" ><strong style={{height:'4px',fontWeight:'bolder'}}><EllipsisOutlined/></strong></i>
-                    </section>
-                    {/* 导航模块 */}
-                    <div className={style.show_type_wrap}>
-                        <div className={style.show_type}>
-                            <ul className={style.show_type_ul}>
-                                <li onClick={this.setcategory.bind(this,0)}>
-                                    <NavLink to={"/show/showsLibrary"}>全部</NavLink>
-                                </li>
-                                <li onClick={this.setcategory.bind(this,35)}>
-                                    <NavLink to={"/show/showsLibrary"}>演唱会</NavLink>
-                                </li>
-                                <li onClick={this.setcategory.bind(this,36)}>
-                                    <NavLink to={"/show/showsLibrary"}>音乐会</NavLink>
-                                </li>
-                                <li onClick={this.setcategory.bind(this,37)}>
-                                    <NavLink to={"/show/showsLibrary"}>话剧歌剧</NavLink>
-                                </li>
-                                <li onClick={this.setcategory.bind(this,38)}>
-                                    <NavLink to={"/show/showsLibrary"}>儿童亲子</NavLink>
-                                </li>
-                                <li onClick={this.setcategory.bind(this,79)}>
-                                    <NavLink to={"/show/showsLibrary"}>音乐剧</NavLink>
-                                </li>
-                                <li onClick={this.setcategory.bind(this,91)}>
-                                    <NavLink to={"/show/showsLibrary"}>戏曲综艺</NavLink>
-                                </li>
-                                <li onClick={this.setcategory.bind(this,99)}>
-                                    <NavLink to={"/show/showsLibrary"}>展览</NavLink>
-                                </li>
-                                <li onClick={this.setcategory.bind(this,86)}>
-                                    <NavLink to={"/show/showsLibrary"}>舞蹈芭蕾</NavLink>
-                                </li>
-                            </ul>
-                        </div>
-                        <div className={style.city_wrap}>
-                            <span className={style.city} onClick={this.showDrawer}>全国</span>
-                            <span className="icons-list"><EnvironmentOutlined /></span>
-                        </div>
-                    </div>
-                    {/* 内容部分 */}
-                    <div className={style.library_wrap} style={{position:'absolute',left:'0',top:'0',boxSizing:'border-box',width:'100%'}}>
-                        <section className={style.recommed_wrap}>
-                            <div className={style.recommed_list} style={{position:'relative',top:'50px',padding:'0px 16px'}}>
-                                {
-                                    this.state.list.map((v)=>(
-                                        // console.log(v.support_desc),
-                                        <ul key={v.schedular_id} style={{listStyle:'none',width:'50%',float:'left',marginBottom:'8px'}}>
-                                            <li style={{display:'flex',flexDirection:'column',width:'100%'}}>
-                                                {/* 演出图片部分 */}
-                                                <div className={style.show_icon} style={{width:'170px'}}>
-                                                    <a href="#">
-                                                        <img src={v.pic} style={{border:'2px solid #ebebeb',width:'170px',height:'224.54px',boxSizing:'border-box',borderRadius:'8px 8px 0 0'}}/>
-                                                    </a>
-                                                </div>
-                                                {/* 演出名称 */}
-                                                <div className={style.item_desc} style={{height:'130px',background:'#fff'}}>
-                                                    <a href="#" style={{textDecoration:'none'}}>
-                                                        <h3 className={style.text_double} style={{fontSize:'14px',color:'#232323',fontWeight:'normal',fontFamily:'"Avenir", Helvetica, Arial, sans-serif',display:'-webkit-box',maxWidth:'170px',height:'40px',margin:'0 auto',overflow:'hidden',textOverflow:'ellipsis',WebkitLineClamp:'2',WebkitBoxOrient:'vertical'}}>
-                                                            <img src={v.method_icon} alt="load file fail" style={{height:'18px',marginRight:'5px',display:'inline-block',verticalAlign:'middle'}}/>
-                                                            {v.name}
-                                                        </h3>
-                                                    </a>
-                                                    <p className={style.show_date} style={{fontSize:'14px',color:'#9f9999'}}>2020.{v.show_time_top}</p>
-                                                    <p style={{fontSize:'12px',height:'24px',lineHeight:'24px',margin:'0',color:'#999999',marginLeft:'8px'}}><strong style={{fontSize:'16px' ,color:'#ff7b3c',marginRight:'5px'}}>¥{v.min_price}</strong>起</p>
-                                                    <p style={{margin:'0',padding:'0'}}>
-                                                        <span style={{display:'inline-block',color:'#ff7b3c',background:'#ffffff',padding:'0px 4px',height:'20px',borderRadius:'5px',marginLeft:'8px'}}>{v.support_desc[0]}</span>
-                                                        <span style={{display:'inline-block',color:'#ff7b3c',background:'#ffffff',padding:'0px 4px',height:'20px',borderRadius:'5px',marginLeft:'8px'}}>{v.support_desc[1]}</span><br/>
-                                                        {/* <span style={{display:'inline-block',color:'#ff7b3c',background:'#fff1ef',padding:'0px 4px',height:'20px',borderRadius:'5px',marginLeft:'8px',marginTop:'5px'}}>限时8.5折起</span> */}
-                                                    </p>
-                                                    
-                                                </div>
+            <React.Fragment>
+                <div style={{width:'100%',height:'100%',overflowX:'hidden'}}>
+                    {this.state.libraryLeft.length > 0 ? (
+                        <div>
+                            {/* 头部 */}
+                            <section className={style.library_title} style={{position:'fixed',top:'0'}}>
+                                <i className="icons-list" onClick={this.back.bind(this)} style={{height:'18px'}}><LeftOutlined/></i>
+                                <h5 className={style.title_text}>演出</h5>
+                                <i className="icons-list" ><strong style={{height:'4px',fontWeight:'bolder'}}><EllipsisOutlined/></strong></i>
+                            </section>
+                            {/* 导航 */}
+                            <div className={style.library_nav}>
+                                <Drawer
+                                    {...this.state}
+                                    showFn = {this.showFn.bind(this)}
+                                    drawerData = {this.props.libraryMap}
+                                    getMapIdToData = {this.getMapIdToData.bind(this)}
+                                ></Drawer>
+                                <div className = {style.nav}>
+                                    <ul>
+                                        <li
+                                            className = {
+                                                this.category / 1 === 0 ? style["liActive"] : ""
+                                            }
+                                            key = {this.$randomKey()}
+                                            onClick = {async () => {
+                                                this.category = 0;
+                                                await this.props.defaultPageIndex.call(this);
+                                                await this.props.getShowListWaterPall.call(this);
+                                                const {isClick} = this.state;
+                                                if(isClick){
+                                                    this.setState({isClick:false});
+                                                    this.requList();
+                                                }
+                                            }}
+                                        >
+                                            全部
+                                        </li>
+                                        {this.props.libraryNav.map((v, i) =>(
+                                            <li
+                                                className={
+                                                    this.category /1 === v.id ? style["liActive"] : ""
+                                                }
+                                                key={v.id}
+
+                                                onClick = {
+                                                    async() =>{
+                                                        this.category = v.id;
+                                                        console.log(this.category)
+                                                        console.log(v.id)
+                                                        await this.props.defaultPageIndex.call(this);
+                                                        await this.props.getShowListWaterPall.call(this);
+                                                    }
+                                                }
+                                            >
+                                                {v.name}
                                             </li>
-                                        </ul>
-                                    ))
-                                }
+                                        ))}
+                                    </ul>
+                                </div>
+                                {/* mask遮罩层 */}
+                                <div
+                                    className={style.nav_map}
+                                    onClick = {()=>{
+                                        this.setState({mask:"block", right:0});
+                                    }}
+                                >
+                                    <div style={{width:'75px'}}>
+                                        <span>
+                                            {JSON.parse(localStorage.getItem("CITY_INFO")).cityName}
+                                        </span>
+                                        <span className = {style.map_icon}>
+                                            <img src={require("../../../assets/img/show/libraryMap.png")} alt=""/>
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
-                        </section>
-                        <div style={{color:'#999',background:'#ff9037',position:'fixed',bottom:'0',right:'0',opacity:'.8'}}>
-                            <a onClick={this.Loadmore.bind(this)}>加载更多</a>
+                            {this.state.libraryLeft.length > 0 ? (
+                                <div className={style.library_waterfall}>
+                                    {/* 左边数据 */}
+                                    <div
+                                        className={style.library_left}
+                                        ref={(el)=>(this.reLeft = el)}
+                                    >
+                                        {this.state.libraryLeft.map((v)=>(
+                                            <WaterfallEle
+                                                {...v}
+                                                key={v.schedular_id+this.$randomKey()}
+                                            >
+                                            </WaterfallEle>
+                                        ))}
+                                    </div>
+                                    {/* 右边数据 */}
+                                    <div
+                                        className = {style.library_right}
+                                        ref={(el)=>(this.reRight = el)}
+                                    >
+                                        {this.state.libraryRight.map((v)=>(
+                                            <WaterfallEle
+                                                {...v}
+                                                key={v.schedular_id+this.$randomKey()}
+                                            ></WaterfallEle>
+                                        ))}
+                                    </div>
+                                </div>
+                            ) : (
+                                <div>暂无数据</div>
+                            )}
                         </div>
-                    </div>
+                    ) : (
+                        <Loading></Loading>
+                    )}
                 </div>
-                
-                {/* <Drawer
-                    title="城市"
-                    placement="right"
-                    closable={false}
-                    onClose={this.onClose}
-                    visible={this.state.visible}
-                >
-                    <ul className={style.list}>
-                        {
-                            this.state.city_list.map((v,i)=>(
-                            <li key={i}>{v.name}</li>
-                            ))
-                        }
-                    </ul>
-                </Drawer> */}
-            </div>
-        )
+            </React.Fragment>
+        );
     }
+  
     async componentDidMount(){
-        console.log("1111111111111")
-        const {data} = await axios.get("/city/city/getCityList?version=6.1.1&referer=2")
-            this.setState({
-                city_list:data.city_list
-            })
-        // console.log(data);
-        this.setcategory()
+        if(this.props.match.params.category_id){
+            this.category = this.props.match.params.category_id;
+            
+        }
+        
+         await this.props.getLibraryNav();
+         await this.props.getLibraryMap();
+         await this.props.getShowListWaterPall.call(this);
+
+        // 滑动事件
+        window.onscroll = () => {
+            let maxScrollHeight =
+              document.documentElement.scrollTop || document.body.scrollTop; //body 实际高度
+            let clientHeight =
+              document.documentElement.clientHeight || document.body.clientHeight; //视口高度
+            // 假设左边盒子高度最小
+            let minDefaultDiv = this.reLeft;
+            let minDefaultHeight = minDefaultDiv.scrollHeight;
+            if(this.reLeft.scrollHeight>this.reRight.scrollHeight){
+                minDefaultHeight = this.reRight.scrollHeight;
+            }
+            if(maxScrollHeight > minDefaultHeight - clientHeight){
+                if(this.switch){
+                    this.switch = false; //满足条件时 先关闭开关 获取数据异步程序
+                    this.props.getShowListWaterPall.call(this);
+                }
+            }
+        };
     }
+
     back(){
         this.props.history.go(-1)
     }
-    async setcategory(category = 0){
-        let page = this.state.page
-        console.log("222222222")
-        const{data} = await axios.get ("/Show/Search/getShowList?city_id=0&category="+category+"&page="+page+"&referer_type=&version=6.1.1&referer=2",{
-            params:{
-                page:this.state.page,
-            }
 
-        })
-        // console.log(data.list)
-        // 一旦状态发生改变, render会执行
-      this.setState({
-          page:data.page,
-          list:data.list,
-      })
-        console.log(data)
+    
+    requList=()=>{
+        this.setState({isClick:true});
     }
-    async Loadmore(category = 0){
-        this.setState({
-            page:this.state.page++
-        })
-        console.log("zzzzz")
-        let page = this.state.page
-        const {data} = await axios.get("/Show/Search/getShowList?category="+category+"&city_id=0&page="+page+"&keywords=&version=6.1.1&referer=2",{
-            params:{
-                page:this.state.page++
-            }
-        })
-        this.setState({
-            page:data.page,
-            list:data.list
-        })
-        // console.log(data,66666)
-    }
-    showDrawer = ()=>{
-        this.setState({
-            visible:true,
-        });
-        console.log(33333333)
-    };
 
-    onClose=()=>{
-        this.setState({
-            visible:false,
-        });
+    $randomKey(){
+        const randomKEy = Math.floor(Math.random()*(900000)+100000);
+        return randomKEy;
     }
 }
+function mapStateToProps (state) {
+    return {
+      libraryNav: state.nav.libraryNav,
+      libraryMap: state.map.libraryMap,
+      libraryInit: state.init.libraryInit,
+      pageIndex: state.page.pageIndex
+    };
+  };
+function  mapDispatchToProps (dispatch){
+    return{
+        getLibraryNav(){
+            dispatch(libraryAction.getLibraryNav())
+        },
+        getLibraryMap(){
+            dispatch(libraryAction.getLibraryMap())
+        },
+        defaultPageIndex(){
+            dispatch(libraryAction.defaultPageIndex.call(this))
+        },
+        getShowListWaterPall(){
+            dispatch(libraryAction.getShowListWaterPall.call(this))
+        }
 
-export default withRouter(Show)
+    }
+};
+export default connect(mapStateToProps, mapDispatchToProps)(index);

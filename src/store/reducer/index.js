@@ -20,6 +20,9 @@ import CardproductIndex from './CardproductIndex'
 import plusIndex from './plus'
 import vipIndex from './vip'
 
+//世强的
+import {the_pageIndex,the_library_nav,the_library_map,the_waterfall} from './library/index';
+
 const rootReducer = combineReducers({
     // 程程的
     slide:slide_listReducer,
@@ -33,7 +36,11 @@ const rootReducer = combineReducers({
     hotSearch:hotSearchReducer,
 
 
-
+    // 世强的
+    page:the_pageIndex,
+    nav:the_library_nav,
+    map:the_library_map,
+    init:the_waterfall,
     // 彩霞的
    
     // 彩霞的  

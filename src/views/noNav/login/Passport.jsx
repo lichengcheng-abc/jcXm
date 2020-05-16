@@ -50,19 +50,15 @@ import style from '../../zjcss/login/login.module.css'
                     {/* 其他登录方式 */}
                     <div className={style.othersLogin}>
                         <p className={style.othersLogin_p}>
-                            <span className={style.othersLogin_span}>
-                                <span className={style.line}></span>
-                                    <i style={{margin:'0 8px',verticalAlign:'-4px',fontStyle:'normal'}}>其他登录方式</i>
-                                <span className={style.line}></span>
-                            </span>
+                                <span className={style.line} style={{borderTop:'1.5px solid #bbb'}}></span>
+                                    <i style={{verticalAlign:'-4px',fontStyle:'normal',margin:'0 14px',boxSizing:'border-box'}}>其他登录方式</i>
+                                <span className={style.line} style={{borderTop:'1.5px solid #bbb'}}></span>
                         </p>
                         {/* qq/weibo */}
-                        <div className={style.footer}>
                             <div className={style.othersImg}>
                                 <img src={qq} alt="图片加载失败"/>
                                 <img src={weibo} alt="图片加载失败"/>
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
