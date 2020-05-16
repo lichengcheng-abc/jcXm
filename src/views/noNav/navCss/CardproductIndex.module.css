@@ -78,7 +78,7 @@
     flex-direction: column;
     overflow: hidden;
 }
-.banner{
+#banner{
     width: 100%;
     height: 556px;
     display: flex;
@@ -88,10 +88,16 @@
     background-size: 100%;
     background-color: #fff;
 }
-.ban_vip{
+#swiperWrap{
     width: 690px;
     height: 400px;
-    margin-top: 60px;
+    margin: 0 auto;
+}
+#ban_vip{
+    width: 690px;
+    height: 400px;
+    margin-top: 30px;
+    
 }
 .vipRoule{
     height: 326px;

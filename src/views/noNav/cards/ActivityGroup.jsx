@@ -14,12 +14,15 @@ export default class Index extends Component{
             <div>
                 <Route path={'/activity/group'} component={Group}></Route>
                 <Route path={'/mygroup'} component={MyGroup}></Route>
-                <nav style={{height:"88px",
-                            display:'flex',
-                            justifyContent:'space-around',
+                <nav style={{
+                    height:"50px",
+                    display:'flex',
+                    justifyContent:'space-around',
+                    lineHeight:'44px',
+                    borderTop:'1px solid #ccc'
                 }} >
                     <NavLink style={{color:'red'}} to={'/activity/group'}>拼团</NavLink>
-                    <NavLink to={'/mygroup'}>我的团</NavLink>
+                    <NavLink to={'/passport/login'}>我的团</NavLink>
                 </nav>
             </div>
         )

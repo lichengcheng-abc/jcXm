@@ -96,7 +96,7 @@
     opacity:0.8;
     display: flex;
     justify-content: space-between;
-}
+}   
 #server .vip p:first-child span{
     color: #F5DEA9;
     font-size: 28px;
@@ -119,12 +119,26 @@
     align-items: center;
     background-color:white;
 }
+#server .show{
+    position: relative;
+}
 #server .show .yan{
     height: 48px;
     color: #232323;
     margin-top:32px;
     font-size: 36px;
     font-weight: bold;
+}
+.show .btn{
+    display: none;
+}
+.show .showAll{
+    width: 100%;
+    position: absolute;
+    top: 1000px;
+    color:red;
+    font-size: 28px;
+    text-align: center;
 }
 .show .comment{
     height: 772px;
@@ -133,25 +147,20 @@
 .show span{
     height: 48px;
 }
+/* .content{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    overflow: hidden;
+} */
 .content img{
     width: 690px;
     height: 518px;
 }
-/* .show .content p{
-    height: 296px;
-    font-size: 26px;
-    color: #232323;
-    margin-top: 48px;
-    margin-bottom: 48px;
-    border: 1px solid yellow;
-}
-.show .content div{
-    height: 516px;
-    margin-bottom: 48px;
-    border: 1px solid red;
-} */
+
 #recomm{
     padding: 0 30px;
+    margin-top:80px;
 }
 #recomm .conn{
     height: 48px;

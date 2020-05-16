@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
+import Swiper from 'swiper/js/swiper.js'
+import 'swiper/css/swiper.min.css'
 import style from '../navCss/CardproductIndex.module.css'
-import more from '../../../assets/img/theater/more.2ce7873.png'
 import cartCreator from '../../../store/actionCreator/CardproductIndex'
 import Loading from '../../../components/common/Loading'
+import HeaderCard from '../../../components/card/HeaderCard'
 class CardproductIndex extends Component {
     constructor() {
         super();
@@ -12,14 +14,9 @@ class CardproductIndex extends Component {
             currentIndex: 0,
             isloading:true,
             btn:['购买新卡','绑定新卡','我的卡包'],
-            cardSelected:false,
         };
     }
-    cardHandleMask=()=>{
-        this.setState({
-            cardSelected: !this.state.cardSelected
-        })
-        }
+
     sestCurrentStyle = (index) => {
         return this.state.currentIndex === index ? 'current' : ''
     }
@@ -41,47 +38,25 @@ class CardproductIndex extends Component {
         const {storeCard} = this.props
         const CardIndex = (
             <div>
-                <header className={style.hea}>
-                <i className={style.index_back}
-                onClick={()=>{
-                    this.props.history.go(-1)
-                }}
-                >&lt;</i>
-                <h3 className={style.header_h3}>购买新卡</h3>
-                <img className={style.index_more} src={more} alt=""
-                onClick={()=>{
-                    this.cardHandleMask()
-                }}
-                />
-            </header>
+                
+            <HeaderCard>购买新卡</HeaderCard>
             <section className={style.section}>
-            <div 
-                    className={this.state.cardSelected ? style.select : style.disSelect }
-                    >
-                        <span
-                        onClick={()=>{
-                            this.props.history.push('/myjuooo/myjuooo')
-                            // console.log(78787)
-                        }}
-                        >我的聚橙</span>
-                        <span
-                        onClick={()=>{
-                            this.props.history.push('/')
-                            // console.log(11111)
-                        }}
-                        >主页</span>
+                    <div className="swiper-container" id={style.banner}>
+                        <div className="swiper-wrapper" id={style.swiperWrap}>
+                            {
+                                banner.map((v,index)=>(
+                                    <div className="swiper-slide" key={index} id={style.ban_vip}>
+                                        <img id={style.ban_vip} src={v.mb_image} alt=""/>
+                                    </div>
+                                ))
+                            }
+                                
+                        </div>
+                        <div className='swiper-pagination'></div>
                     </div>
-                    {
-                        banner.map(v=>(
-                        <div key={v.name} className={style.banner}
-                        onClick={()=>{
-                            this.props.history.push('/vip/index') 
-                        }}
-                        >
-                            <img className={style.ban_vip} src={v.mb_image} alt=""/>
-                        </div> 
-                        ))
-                    } 
+
+                    
+                        
                     <div className={style.vipRoule}>
                         <span className={style.vip_p}><span className={style.vip_h2}>VIP+<em className={style.vip_em}>开通vip,演出随心看</em></span><i className={style.vip_back}
                         
@@ -168,12 +143,7 @@ class CardproductIndex extends Component {
                                 )) 
                         }
                     </div>
-                    <div 
-                        onClick={()=>{
-                            this.cardHandleMask()
-                        }}
-                        className={this.state.cardSelected ? style.mask : style.dismask } 
-                    ></div>
+                   
 
             </section>
 
@@ -203,7 +173,18 @@ class CardproductIndex extends Component {
         this.props.getCartList.call(this)
         this.props.getVipRuleList.call(this)
         this.props.getHotBannerList.call(this)
-        
+    }
+    componentDidUpdate(){
+        new Swiper('.swiper-container', {
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false
+            },
+            pagination: {
+                el: '.swiper-pagination',
+            }
+        });
     }
 }
 function mapStateToprops({CardproductIndex}){

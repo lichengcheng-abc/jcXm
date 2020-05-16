@@ -4,25 +4,18 @@ import Loading from '../../../components/common/Loading'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import style from '../navCss/vip.module.css'
-import more from '../../../assets/img/theater/more.2ce7873.png'
 import banner from '../../../assets/img/cart/rAoKmV3ggTyAXnFrAAHF-ZAZv74104.png'
 import one from '../../../assets/img/cart/vip_plus_double_points.3e1951f.png'
 import ReactDom from 'react-dom'
+import HeaderCard from '../../../components/card/HeaderCard'
 
 class VipIndex extends Component {
     constructor() {
         super();
         this.state = {
-            dateSelected:false,
             isLoading:true,
             legal:false
         };
-    }
-    handleMask=()=>{
-        
-        this.setState({
-           dateSelected: !this.state.dateSelected
-        })
     }
     handleLegal=()=>{
         var legal = document.getElementById('sp')
@@ -52,20 +45,8 @@ class VipIndex extends Component {
         const {goods} = this.props
         const vipList = (
             <div>
-                <header className={style.header}>
-                    <i className={style.back}
-                    onClick={()=>{
-                        this.props.history.go(-1)
-                    }}
-                    >&lt;</i>
-                    <h3 className={style.header_h3}>vip + 会员</h3>
-                    <img className={style.more} src={more} alt="" 
-                    onClick={()=>{
-                        this.handleMask()
-                    }}
-                    />
-                    
-                </header>
+                
+                <HeaderCard>VIP + 会员</HeaderCard>
                 <section className={style.section}>
                 <div 
                     className={this.state.dateSelected ? style.select : style.disSelect }
@@ -109,7 +90,11 @@ class VipIndex extends Component {
                             <img className={style.banner_img} src={banner} alt=""/>
                     </div>
                     <div className={style.discount}>
-                    <span className={style.vip_p}><span className={style.vip_h2}>专享折扣</span><i className={style.vip_back}>></i></span>
+                    <span className={style.vip_p}><span className={style.vip_h2}>专享折扣</span><i className={style.vip_back}
+                    onClick={()=>{
+                        this.props.history.push('/theatre/theatreList')
+                    }}
+                    >></i></span>
                     <div className={style.goodsList}>
                         {
                             goods.map(v=>(
@@ -131,7 +116,9 @@ class VipIndex extends Component {
                         window.removeEventListener('scroll',this.handleScroll);
                         this.props.history.push('/vip/discount') 
                     }}
-                    
+                    onClick={()=>{
+                        this.props.history.push('/theatre/theatreList')
+                    }}
                     >查看更多演出>></div> 
                     </div>
                     <div className={style.double}>
@@ -152,12 +139,14 @@ class VipIndex extends Component {
                 </section>
                 <footer id={'abc'} className={style.footer}>立即开通￥99/年</footer>
                 <div id={'sp'} className={style.legal}>
-                    <div className={style.tit}>
+                    <div className={style.tit}
+                    onClick={()=>{
+                        this.handleLegal()
+                    }}
+                    >
                         <span>权益解读</span>
                         <strong
-                        onClick={()=>{
-                            this.handleLegal()
-                        }}
+                        
                         ></strong>
                         
                     </div>
